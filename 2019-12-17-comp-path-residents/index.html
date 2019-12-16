@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Introduction to Machine Learning</title>
+
+    <meta name="description" content="Introduction to Machine Learning">    
+
+        <meta name="author" content="Scott Doyle" />
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <!-- Set Theme -->
+        <link rel="stylesheet" href="css/theme/scottdoy.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/atelier-dune-light.css">
+    
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+          </head>
+
+  <body>
+
+  
+  <div class="reveal">
+    <div class="slides">
+      <!-- Custom Title Section Here -->
+      <section data-background="#005bbb" id="particles-js">
+        <!-- particles.js container 
+        <div id="particles-js"></div>-->
+        <span style="position:absolute; top:25%;left:3%;">
+        <h1 style="color: #e4e4e4;">Introduction to Machine Learning</h1>
+        <p>
+          <h2 style="color: #e4e4e4;">(aka Artificial Intelligence)</h2>
+        </p>
+        <p style="color: #e4e4e4;"><small>Scott Doyle / scottdoy@bufalo.edu</small></p>
+        </span>
+      </section>
+
+      <!-- Custom TOC Section here-->
+      
+      <!-- Insert Body -->
+      <section id="section" class="level1">
+      <h1></h1>
+      <section id="machine-learning" class="level2">
+      <h2>Machine Learning</h2>
+      <p>A Brief Introduction</p>
+      </section>
+      <section id="machine-learning-definitions" class="level2">
+      <h2>Machine Learning Definitions</h2>
+      <p><strong>Machine Learning</strong> (ML) uses <strong>collected data</strong> to do something useful.</p>
+      <ul>
+      <li>Find underlying patterns (<strong>knowledge discovery</strong>)</li>
+      <li>Simplify a complex phenomenon (<strong>model building</strong>)</li>
+      <li>Place data into categories (<strong>classification</strong>)</li>
+      <li>Predict future data (<strong>regression</strong>)</li>
+      </ul>
+      </section>
+      <section id="machine-learning-definitions-1" class="level2">
+      <h2>Machine Learning Definitions</h2>
+      <p>The job of the ML expert is to:</p>
+      <ul>
+      <li>Understand and identify the <strong>goal</strong></li>
+      <li>Collect <strong>data</strong></li>
+      <li>Select an appropriate <strong>model</strong> or <strong>algorithm</strong></li>
+      <li>Evaluate the system in terms of <strong>costs</strong></li>
+      </ul>
+      </section>
+      <section id="types-of-machine-learning" class="level2">
+      <h2>Types of Machine Learning</h2>
+      <div class="l-double">
+      <div>
+      <p><strong>Supervised Learning</strong></p>
+      <p>Train a model using labeled datasets to predict the class of new, unseen data</p>
+      </div>
+      <div>
+      <p><strong>Unsupervised Learning</strong></p>
+      <p>Identify natural groupings and patterns in unlabeled datasets</p>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-1" class="level1">
+      <h1></h1>
+      <section id="example-cancer-diagnosis" class="level2">
+      <h2>Example: Cancer Diagnosis</h2>
+      </section>
+      <section id="example-biomedical-image-analysis" class="level2">
+      <h2>Example: Biomedical Image Analysis</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/fna_92_5311_benign.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/fna_91_5691_malignant.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="fine-needle-aspirates" class="level2">
+      <h2>Fine Needle Aspirates</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" /><figcaption>Benign FNA Image</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" /><figcaption>Malignant FNA Image</figcaption>
+      </figure>
+      </div>
+      </div>
+      <p><strong>Problem Statement:</strong> Predict whether a patient’s tumor is benign or malignant, given an FNA image</p>
+      </section>
+      <section id="data-definitions" class="level2">
+      <h2>Data Definitions</h2>
+      <p>The starting point for all ML algorithms is <strong>data</strong>.</p>
+      <p>So… what do we mean by “data”?</p>
+      </section>
+      <section id="data-comes-in-many-forms" class="level2">
+      <h2>Data Comes in Many Forms</h2>
+      <figure>
+      <img src="img/data_formats.png" alt="Complex, Multi-Modal Data" style="width:70.0%" /><figcaption>Complex, Multi-Modal Data</figcaption>
+      </figure>
+      </section>
+      <section id="quantitative-structure-expression-of-disease-state" class="level2">
+      <h2>Quantitative Structure:<br/> Expression of Disease State</h2>
+      <p>Biological structure is <strong>primary data</strong>.</p>
+      <p>We can quantify <strong>biological structure</strong>.</p>
+      <p>We can <strong>model</strong> relationships between <strong>structure and disease</strong>.</p>
+      </section>
+      <section id="fundamental-hypothesis" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div class="l-double">
+      <div>
+      <p><img src="img/badve2008_fig4b1.svg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/badve2008_fig4b2.svg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      <p style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008) </small>
+      </p>
+      </section>
+      <section id="fundamental-hypothesis-1" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <p><img src="img/paik2004_fig2.svg" style="width:80.0%" /></p>
+      <p style="text-align: left;">
+      <small> Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="data-fusion-improves-predictions" class="level2">
+      <h2>Data Fusion Improves Predictions</h2>
+      <div class="l-multiple" style="grid-template-columns: auto auto auto;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_quanthisto.png" alt="Quantitative Histology" style="height:30.0%" /><figcaption>Quantitative Histology</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_lowdim1.png" alt=" " style="height:30.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1 / span 2;vertical-align: middle;">
+      <figure>
+      <img src="img/lee2015_combined.png" alt="Combined Embeddings" style="height:30.0%" /><figcaption>Combined Embeddings</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_massspect.png" alt="Mass Spectrometry" style="height:30.0%" /><figcaption>Mass Spectrometry</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_lowdim2.png" alt="Low-Dimensional Embeddings" style="height:30.0%" /><figcaption>Low-Dimensional Embeddings</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      <section id="atoms-to-anatomy-paradigm" class="level2">
+      <h2>Atoms to Anatomy Paradigm</h2>
+      <div class="l-multiple" style="grid-template-columns: 1.5fr 1fr 1fr 1fr; row-gap:0;">
+      <div style="grid-row: 1 / span 2;">
+      <p><img src="img/ata01.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata02.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata03.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata04.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata05.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata06.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata07.png" width="456" height="356" /></p>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-2" class="level1">
+      <h1></h1>
+      <section id="example-cancer-diagnosis-1" class="level2">
+      <h2>Example: Cancer Diagnosis</h2>
+      </section>
+      <section id="fine-needle-aspirate-analysis" class="level2">
+      <h2>Fine Needle Aspirate Analysis</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/fna_91_5691_malignant.png" alt="Benign FNA Image" style="width:100.0%" /><figcaption>Benign FNA Image</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/fna_92_5311_benign.png" alt="Malignant FNA" style="width:100.0%" /><figcaption>Malignant FNA</figcaption>
+      </figure>
+      </div>
+      </section>
+      <section id="bulding-informative-features" class="level2">
+      <h2>Bulding Informative Features</h2>
+      <p><strong>Domain knowledge</strong> identifies useful features.</p>
+      <p>Pathologists already distinguish <strong>beign</strong> from <strong>malignant</strong> tumors.</p>
+      <p>Our job is to convert <strong>qualitative</strong> features to <strong>quantitative</strong> ones.</p>
+      </section>
+      <section id="building-informative-features" class="level2">
+      <h2>Building Informative Features</h2>
+      <p>The pathologist lists cell nuclei features of importance:</p>
+      <div class="l-double">
+      <div>
+      <ol type="1">
+      <li>Radius</li>
+      <li>Texture</li>
+      <li>Perimeter</li>
+      <li>Area</li>
+      <li>Smoothness</li>
+      </ol>
+      </div>
+      <div>
+      <ol start="6" type="1">
+      <li>Compactness</li>
+      <li>Concavity</li>
+      <li>Concave Points</li>
+      <li>Symmetry</li>
+      <li>Fractal Dimension</li>
+      </ol>
+      </div>
+      </div>
+      <p><strong>Feature extraction</strong> results in 30 feature values per image.</p>
+      </section>
+      <section id="selecting-features-for-the-fna" class="level2">
+      <h2>Selecting Features for the FNA</h2>
+      <p>To begin, we collect <strong>training samples</strong> to build a model.</p>
+      <ul>
+      <li>Collect a lot of example images for each class.</li>
+      <li>Get our expert to label each image as “Malignant” or “Benign”</li>
+      <li>Measure the features of interest (image analysis or by hand).</li>
+      <li>Build a histogram of the measured feature.</li>
+      </ul>
+      </section>
+      <section id="texture-of-the-nuclei" class="level2">
+      <h2>Texture of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/texture_mean.html">
+      </iframe>
+      </section>
+      <section id="average-radius-of-the-nuclei" class="level2">
+      <h2>Average Radius of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/radius_mean.html">
+      </iframe>
+      </section>
+      <section id="characteristics-of-good-features" class="level2">
+      <h2>Characteristics of Good Features</h2>
+      <ul>
+      <li><strong>Descriptive</strong>: Similar within a class, and different between classes</li>
+      <li><strong>Relevant</strong>: Features should make sense</li>
+      <li><strong>Invariant</strong>: Not dependent on how you measure them</li>
+      </ul>
+      </section>
+      <section id="calculating-probabilities-from-features" class="level2">
+      <h2>Calculating Probabilities from Features</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/pdf_cdf.html">
+      </iframe>
+      </section>
+      <section id="combinations-of-features" class="level2">
+      <h2>Combinations of Features</h2>
+      <p><strong>Combining features</strong> often yields greater class separation.</p>
+      </section>
+      <section id="multivariate-distribution" class="level2">
+      <h2>Multivariate Distribution</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/2d_scatter_histogram_plot.html">
+      </iframe>
+      </section>
+      <section id="multivariate-distribution-1" class="level2">
+      <h2>Multivariate Distribution</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/2d_scatter_plot.html">
+      </iframe>
+      </section>
+      <section id="tradeoff-variance-vs.generalization" class="level2">
+      <h2>Tradeoff: Variance vs. Generalization</h2>
+      <p>Linear boundaries do not model <strong>variance</strong> and miss obvious trends.</p>
+      <p>Complex boundaries fit training perfectly, but do not <strong>generalize</strong>.</p>
+      <p>In general, you want the <strong>simplest</strong> model with the best <strong>performance</strong>.</p>
+      </section>
+      <section id="tradeoff-variance-vs.generalization-1" class="level2">
+      <h2>Tradeoff: Variance vs. Generalization</h2>
+      <p>Each of these decision boundaries makes errors!</p>
+      <p>There is always a tradeoff; we need to consider the <strong>cost</strong>.</p>
+      <p>Cost is defined by our goals and acceptable performance.</p>
+      </section>
+      <section id="costs" class="level2">
+      <h2>Costs</h2>
+      <p>How do we balance the errors we might make? Should we prioritize some kinds of errors over others?</p>
+      <p>Not all mistakes carry the same cost. For example:</p>
+      <ul>
+      <li>A patient is told they have a tumor when they do not (<strong>false positive</strong>)</li>
+      <li>A patient is told they are cancer-free when they are not (<strong>false negative</strong>)</li>
+      </ul>
+      </section>
+      </section>
+      <section id="section-3" class="level1">
+      <h1></h1>
+      <section id="neural-networks" class="level2">
+      <h2>Neural Networks</h2>
+      <p>Building Blocks for Deep Learning</p>
+      </section>
+      <section id="biological-inspiration-for-neural-networks" class="level2">
+      <h2>Biological Inspiration for Neural Networks</h2>
+      </section>
+      <section id="anatomy-of-an-artificial-neuron" class="level2">
+      <h2>Anatomy of a[n Artificial] Neuron</h2>
+      </section>
+      <section id="simple-perceptron-decision-space" class="level2">
+      <h2>Simple Perceptron Decision Space</h2>
+      </section>
+      <section id="hidden-layer-complex-nonlinear-decision-space" class="level2">
+      <h2>Hidden Layer: Complex, Nonlinear Decision Space</h2>
+      </section>
+      <section id="simple-problem-xor-classification" class="level2">
+      <h2>Simple Problem: XOR Classification</h2>
+      </section>
+      <section id="neural-network-solution-to-xor" class="level2">
+      <h2>Neural Network Solution to XOR</h2>
+      </section>
+      <section id="details-of-neural-network-weights" class="level2">
+      <h2>Details of Neural Network Weights</h2>
+      </section>
+      <section id="training-neural-networks-finding-the-weights" class="level2">
+      <h2>Training Neural Networks: Finding the Weights</h2>
+      </section>
+      <section id="why-is-it-called-a-black-box" class="level2">
+      <h2>Why Is It Called A “Black Box”?</h2>
+      </section>
+      </section>
+      <section id="section-4" class="level1">
+      <h1></h1>
+      <section id="deep-learning" class="level2">
+      <h2>Deep Learning</h2>
+      <p>How Does It Work?</p>
+      </section>
+      <section id="strong-ai" class="level2">
+      <h2>“Strong” AI</h2>
+      </section>
+      <section id="weak-ai" class="level2">
+      <h2>“Weak” AI</h2>
+      </section>
+      <section id="deep-classifiers" class="level2">
+      <h2>Deep Classifiers</h2>
+      <p>Hand Crafted Features Selecting features relevant to the image classes Deep Learning Use the input samples themselves to identify classes</p>
+      <p>Innovations that make deep learning possible: Large amounts of well-annotated data Commodity-level, highly parallel hardware Innovations in training algorithms</p>
+      </section>
+      <section id="simple-example-mnist-handwriting-dataset" class="level2">
+      <h2>Simple Example: MNIST Handwriting Dataset</h2>
+      </section>
+      <section id="images-in-neural-networks" class="level2">
+      <h2>Images in Neural Networks</h2>
+      </section>
+      <section id="images-in-neural-networks-1" class="level2">
+      <h2>Images in Neural Networks</h2>
+      </section>
+      <section id="comparing-zeros-to-ones" class="level2">
+      <h2>Comparing Zeros to Ones</h2>
+      </section>
+      <section id="math-of-neural-networks" class="level2">
+      <h2>Math of Neural Networks</h2>
+      </section>
+      <section id="math-of-neural-networks-1" class="level2">
+      <h2>Math of Neural Networks</h2>
+      </section>
+      <section id="do-you-know-what-this-is" class="level2">
+      <h2>Do You Know What This Is?</h2>
+      </section>
+      <section id="how-do-you-know" class="level2">
+      <h2>How Do You Know?</h2>
+      </section>
+      <section id="modifications-to-nns-needed" class="level2">
+      <h2>Modifications to NNs Needed</h2>
+      </section>
+      <section id="exploiting-spatial-relationships" class="level2">
+      <h2>Exploiting Spatial Relationships</h2>
+      </section>
+      <section id="convolutional-neural-network-architecture" class="level2">
+      <h2>Convolutional Neural Network Architecture</h2>
+      </section>
+      <section id="filter-responses" class="level2">
+      <h2>Filter Responses</h2>
+      </section>
+      <section id="patch-based-classification-segmentation" class="level2">
+      <h2>Patch-Based Classification: Segmentation</h2>
+      </section>
+      <section id="results-of-classification-patch-by-patch-scale" class="level2">
+      <h2>Results of Classification (Patch-by-Patch Scale)</h2>
+      </section>
+      </section>
+      <section id="section-5" class="level1">
+      <h1></h1>
+      <section id="thank-you" class="level2">
+      <h2>Thank You!</h2>
+      </section>
+      </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <!-- Particles scripts -->
+    <script src="lib/js/particles.js"></script>
+    <script src="lib/js/app.js"></script>
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        fragments: true,
+
+                  transition: Reveal.getQueryHash().transition || 'slide',
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+          { src: 'plugin/math/math.js', async: true },
+          { src: 'plugin/chalkboard/chalkboard.js'}
+        ],
+        
+        // Chalkboard Plugin Settings
+				chalkboard: {
+					src: "plugin/chalkboard/chalkboard.json",
+					toggleChalkboardButton: { left: "80px" },
+					toggleNotesButton: { left: "130px" },
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					theme: "whiteboard",
+//					background: [ 'rgba(127,127,127,.1)' , 'reveal.js-plugins/chalkboard/img/whiteboard.png' ],
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					pen: [ url('reveal.js-plugins/chalkboard/img/boardmarker.png), auto' , 'url(reveal.js-plugins/chalkboard/img/boardmarker.png), auto' ],
+//				        color: [ 'rgba(0,0,255,1)', 'rgba(0,0,255,0.5)' ],
+//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
+				},
+				keyboard: {
+				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
+				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
+				    68: function() { RevealChalkboard.download() },	// downlad chalkboard drawing when 'd' is pressed
+					  90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					  84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+				},
+      });
+
+    </script>
+  </body>
+</html>
