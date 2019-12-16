@@ -247,11 +247,11 @@ To begin, we collect **training samples** to build a model.
 
 ## Multivariate Distribution
 
-<iframe frameborder="0" seamless='seamless' scrolling=no src="plots/2d_scatter_histogram_plot.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plots/scatter_histogram_plot.html"></iframe>
 
 ## Multivariate Distribution
 
-<iframe frameborder="0" seamless='seamless' scrolling=no src="plots/2d_scatter_plot.html"></iframe>
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plots/scatter_plot.html"></iframe>
 
 ## Tradeoff: Variance vs. Generalization
 
