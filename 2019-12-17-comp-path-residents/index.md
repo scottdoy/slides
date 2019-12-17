@@ -171,7 +171,9 @@ Paik et al., N Engl J Med (2004)
 
 # 
 
-## Example: Cancer Diagnosis
+## Machine Learning
+
+Learning from Feature Data
 
 ## Fine Needle Aspirate Analysis
 
@@ -218,10 +220,10 @@ The pathologist lists cell nuclei features of importance:
 
 To begin, we collect **training samples** to build a model.
 
-- Collect a lot of example images for each class.
+- Collect a lot of example images for each class
 - Get our expert to label each image as "Malignant" or "Benign"
-- Measure the features of interest (image analysis or by hand).
-- Build a histogram of the measured feature.
+- Measure the features of interest (image analysis or by hand)
+- Build a histogram of the measured feature
 
 ## Texture of the Nuclei
 
@@ -233,9 +235,9 @@ To begin, we collect **training samples** to build a model.
 
 ## Characteristics of Good Features
 
-- **Descriptive**: Similar within a class, and different between classes
-- **Relevant**: Features should make sense
-- **Invariant**: Not dependent on how you measure them
+- **Descriptive:** Similar within a class, and different between classes
+- **Relevant:** Features should make sense
+- **Invariant:** Not dependent on how you measure them
 
 ## Calculating Probabilities from Features
 
@@ -271,13 +273,14 @@ Cost is defined by our goals and acceptable performance.
 
 ## Costs
 
-How do we balance the errors we might make? Should we prioritize some kinds of
-errors over others?
+Should we prioritize some kinds of errors over others?
 
+<div class="txt-box">
 Not all mistakes carry the same cost. For example:
 
 - A patient is told they have a tumor when they do not (**false positive**)
 - A patient is told they are cancer-free when they are not (**false negative**)
+</div>
 
 # 
 
@@ -287,21 +290,37 @@ Building Blocks for Deep Learning
 
 ## Biological Inspiration for Neural Networks
 
+![Biological Neuron](img/biological_neuron.png){ width=75% }
+
 ## Anatomy of a[n Artificial] Neuron
 
 ## Simple Perceptron Decision Space
 
+![Simple Perceptron](img/simple_perceptron_decision_space.png){ width=75% }
+
 ## Hidden Layer: Complex, Nonlinear Decision Space
+
+![Artificial Neural Network](img/hidden_layer_complex_decision_space.png){ width=75% }
 
 ## Simple Problem: XOR Classification
 
+![XOR Problem](img/xor_classification.png){ width=35% }
+
 ## Neural Network Solution to XOR
+
+![XOR Problem](img/xor_solution.png){ width=50% }
 
 ## Details of Neural Network Weights
 
+![Network Weights](img/network_weights.png){ width=35% }
+
 ## Training Neural Networks: Finding the Weights
 
+![Backpropagation Schematic](img/backpropagation_schematic.png){ width=40% }
+
 ## Why Is It Called A "Black Box"?
+
+<iframe frameborder="0" seamless='seamless' scrolling=yes src="https://playground.tensorflow.org/"></iframe>
 
 # 
 
@@ -311,47 +330,247 @@ How Does It Work?
 
 ## "Strong" AI
 
+<div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr;">
+<div>
+![](img/strong_ai_hal.jpg){ width=100% }
+</div>
+<div>
+![](img/strong_ai_johnny.jpg){ width=100% }
+</div>
+<div>
+![](img/strong_ai_battlestar.jpg){ width=100% }
+</div>
+</div>
+
 ## "Weak" AI
+
+<div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr;">
+<div>
+![](img/weak_ai_cars.jpg){ width=100% }
+</div>
+<div>
+![](img/weak_ai_faces.jpg){ width=100% }
+</div>
+<div>
+![](img/weak_ai_translation.jpg){ width=100% }
+</div>
+</div>
 
 ## Deep Classifiers
 
-Hand Crafted Features 
-	Selecting features relevant to the image classes
-Deep Learning
-	Use the input samples themselves to identify classes
+<div class="txt-left">
+
+**Hand Crafted Features:** Selecting features relevant to the image classes
+
+**Deep Learning:** Use the input samples themselves to identify classes
 
 Innovations that make deep learning possible:
-	Large amounts of well-annotated data
-	Commodity-level, highly parallel hardware
-	Innovations in training algorithms
+
+- Large amounts of well-annotated data
+- Commodity-level, highly parallel hardware
+- Innovations in training algorithms
+</div>
 
 ## Simple Example: MNIST Handwriting Dataset
 
-## Images in Neural Networks
+![MNIST Handwriting Sample](img/mnist.png){ width=30% }
 
 ## Images in Neural Networks
+
+<div class="l-double">
+<div>
+![Pixels of an Image](img/zerogrid.png)
+</div>
+<div>
+![Vectorized Images](img/zerosgrid.png)
+</div>
+</div>
+
+## Images in Neural Networks
+
+<div class="l-double">
+<div>
+![Pixels of an Image](img/onegrid.png)
+</div>
+<div>
+![Vectorized Images](img/onesgrid.png)
+</div>
+</div>
 
 ## Comparing Zeros to Ones
 
-## Math of Neural Networks
+<div class="l-double">
+<div>
+![All Zeros](img/zeros.png){width=100%}
+</div>
+<div>
+![All Ones](img/ones.png){width=100%}
+</div>
+</div>
 
-## Math of Neural Networks
+## Images in Neural Networks
 
-## Do You Know What This Is?
+<div class="l-double" style="grid-template-columns: 0.75fr 1fr;">
+<div>
+![Image Input](img/zerogrid_highlighted.png){width=80%}
+</div>
+<div>
+![Input to Neural Network](img/backpropagation_zero.png){width=80%}
+</div>
+</div>
+
+## Images in Neural Networks
+
+<div class="l-double" style="grid-template-columns: 0.75fr 1fr;">
+<div>
+![Image Input](img/onegrid_highlighted.png){width=80%}
+</div>
+<div>
+![Input to Neural Network](img/backpropagation_one.png){width=80%}
+</div>
+</div>
+
+
+## Do You Know What These Are?
+
+<div class="l-double">
+<div>
+![](img/he_cell01_resized.png){width=80%}
+</div>
+<div>
+![](img/he_cell02_resized.png){width=80%}
+</div>
+</div>
+
+## Do You Know What These Are?
+
+<div class="l-double">
+<div>
+![](img/he_nocell01_resized.png){width=80%}
+</div>
+<div>
+![](img/he_nocell02_resized.png){width=80%}
+</div>
+</div>
 
 ## How Do You Know?
 
+<div class="l-double">
+<div class="txt-left">
+Let's do some quick **calculations**...
+
+- Number of pixels: $64\times64=4,096$
+- Color values: $4,096\times3=12,288$
+
+With just over **12,000 values**, our brains can identify the type of object in this image.
+
+That seems like a lot, but for a computer, that's just **12kb**!
+
+But we aren't done yet...
+</div>
+<div>
+![](img/he_cell01_resized.png){width=80%}
+</div>
+</div>
+
 ## Modifications to NNs Needed
+
+<div class="l-double">
+<div class="txt-left">
+
+- Input Size: 12,288
+- Hidden Units (double): 24,000
+- Input-to-Hidden Weights: 294 Million
+- Output Classes: 3
+- Hidden-to-Output Weights: 882 Million
+- **Total Weights: 1.17 Billion**
+- We need a new approach...
+
+</div>
+<div>
+![](img/he_cell01_resized.png){width=80%}
+</div>
+</div>
 
 ## Exploiting Spatial Relationships
 
+<div class="l-double">
+<div class="txt-left">
+
+Images are:
+
+- **Spatially Localized:** Allows us to restrict the number of weights from input to output
+- **Scale-dependent:** Reducing image scale allows us to find connections between shapes and objects
+</div>
+<div>
+![](img/he_cell01_resized.png){width=80%}
+</div>
+</div>
+
+
 ## Convolutional Neural Network Architecture
+
+![VGG 16 Network Architecture](img/vgg16.png){width=100%}
 
 ## Filter Responses
 
+<div class="l-double">
+<div>
+![Dog](img/cifar10_dog_input.png)
+</div>
+<div>
+![CNN Architecture](img/vgg16.png){width=100%}
+</div>
+</div>
+
+## Filter Responses
+
+<div class="l-double">
+<div>
+![Dog](img/cifar10_dog_input.png)
+</div>
+<div>
+![Filter Responses](img/cifar10_dog_filters.png){width=60%}
+</div>
+</div>
+
 ## Patch-Based Classification: Segmentation
 
-## Results of Classification (Patch-by-Patch Scale)
+![H&E Tissue Sample](img/he_tissue_sample.jpg){ width=33% }
+
+## Filter Responses
+
+<div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr 1fr">
+<div style="grid-row: 1 / span 2; grid-column: 1;">
+![](img/he_tissue_sample.jpg)
+</div>
+<div style="grid-row: 1; grid-column: 2 / span 3;">
+![](img/vgg16.png){width=80%}
+</div>
+<div style="grid-row: 2; grid-column:2;">
+![](img/he_filter01.png){width=80%}
+</div>
+<div style="grid-row: 2; grid-column:3;">
+![](img/he_filter02.png){width=80%}
+</div>
+<div style="grid-row: 2; grid-column:4;">
+![](img/he_filter03.png){width=80%}
+</div>
+</div>
+
+
+## Results of Classification
+
+<div class="l-double">
+<div>
+![Ground Truth Label Map](img/ground_truth.png)
+</div>
+<div>
+![Classification Output](img/segmentation.jpg)
+</div>
+</div>
+
+
 
 # 
 
