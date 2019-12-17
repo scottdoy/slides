@@ -305,8 +305,17 @@ html {
 
 .reveal .txt-left {
   text-align: left;
+  width: 100%;
+  margin: 0 10% 10% 0; }
+
+.reveal .txt-box {
+  text-align: left;
   width: max-content;
-  margin: 0 20%; }
+  margin: 0 10%;
+  padding: 10px;
+  border: 5px solid #e56a54;
+  border-radius: 5px;
+  background-color: #e4e4e4; }
 
 .reveal iframe {
   text-align: center;
