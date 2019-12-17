@@ -1,7 +1,7 @@
 ---
 theme: scottdoy
 highlight-style: atelier-dune-light
-transition: slide
+transition: fade
 slide-level: 2
 
 author: Scott Doyle
