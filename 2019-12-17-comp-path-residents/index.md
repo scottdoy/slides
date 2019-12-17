@@ -21,19 +21,27 @@ A Brief Introduction
 
 **Machine Learning** (ML) uses **collected data** to do something useful.
 
-- Find underlying patterns (**knowledge discovery**)
-- Simplify a complex phenomenon (**model building**)
-- Place data into categories (**classification**)
-- Predict future data (**regression**)
+<div class="txt-left">
+<ul>
+<li class="fragment">Find underlying patterns (**knowledge discovery**)</li>
+<li class="fragment">Simplify a complex phenomenon (**model building**)</li>
+<li class="fragment">Place data into categories (**classification**)</li>
+<li class="fragment">Predict future data (**regression**)</li>
+</ul>
+</div>
 
 ## Machine Learning Definitions
 
 The job of the ML expert is to:
 
-- Understand and identify the **goal**
-- Collect **data**
-- Select an appropriate **model** or **algorithm**
-- Evaluate the system in terms of **costs**
+<div class="txt-left">
+<ul>
+<li class="fragment">Understand and identify the **goal**</li>
+<li class="fragment">Collect **data**</li>
+<li class="fragment">Select an appropriate **model** or **algorithm**</li>
+<li class="fragment">Evaluate the system in terms of **costs**</li>
+</ul>
+</div>
 
 ## Types of Machine Learning
 
@@ -41,12 +49,12 @@ The job of the ML expert is to:
 <div>
 **Supervised Learning**
 
-Train a model using labeled datasets to predict the class of new, unseen data
+<p class="fragment">Use **labeled datasets** to classify new, unseen data</p>
 </div>
 <div> 
 **Unsupervised Learning**
 
-Identify natural groupings and patterns in unlabeled datasets
+<p class="fragment">Use **unlabeled data** to identify natural groups</p>
 </div>
 </div>
 
@@ -82,7 +90,7 @@ Identify natural groupings and patterns in unlabeled datasets
 
 The starting point for all ML algorithms is **data**.
 
-So... what do we mean by "data"?
+<p class="fragment">So... what do we mean by "data"?</p>
 
 ## Data Comes in Many Forms
 
@@ -90,17 +98,17 @@ So... what do we mean by "data"?
 
 ## Quantitative Structure:<br/> Expression of Disease State
 
-Biological structure is **primary data**.
+<p class="fragment">Biological structure is **primary data**. </p>
 
-We can quantify **biological structure**.
+<p class="fragment">We can quantify **biological structure**.</p>
 
-We can **model** relationships between **structure and disease**.
+<p class="fragment">We can **model** relationships between **structure and disease**.</p>
 
 ## Fundamental Hypothesis
 
 Changes in genomic expression manifest as physical changes in tumor morphology
 
-<div class="l-double">
+<div class="fragment fade-in-then-out l-double">
 <div>
 ![ ](img/badve2008_fig4b1.svg){ width=80% }
 </div>
@@ -110,18 +118,13 @@ Changes in genomic expression manifest as physical changes in tumor morphology
 </div>
 
 <p style="text-align: left;"><small>
-S. S. Badve et al., JCO (2008)
-</small></p>
-
-## Fundamental Hypothesis
-
-Changes in genomic expression manifest as physical changes in tumor morphology
-
-![](img/paik2004_fig2.svg){ width=80% }
-
-<p style="text-align: left;"><small>
+S. S. Badve et al., JCO (2008),
 Paik et al., N Engl J Med (2004)
 </small></p>
+
+<div class="fragment" style="position:relative; top:-750px;">
+![](img/paik2004_fig2.svg){ width=80% }
+</div>
 
 ## Data Fusion Improves Predictions
 
@@ -185,13 +188,13 @@ Learning from Feature Data
 ![Malignant FNA](img/fna_92_5311_benign.png){ width=100% }
 </div>
 
-## Bulding Informative Features
+## Building Informative Features
 
-**Domain knowledge** identifies useful features.
+<p class="fragment">**Domain knowledge** identifies useful features.</p>
 
-Pathologists already distinguish **beign** from **malignant** tumors.
+<p class="fragment">Pathologists already distinguish **beign** from **malignant** tumors.</p>
 
-Our job is to convert **qualitative** features to **quantitative** ones.
+<p class="fragment">Our job is to convert **qualitative** features to **quantitative** ones.</p>
 
 ## Building Informative Features
 
@@ -214,16 +217,20 @@ The pathologist lists cell nuclei features of importance:
 </div>
 </div>
 
-**Feature extraction** results in 30 feature values per image.
+<p class="fragment">**Feature extraction** results in 30 feature values per image.</p>
 
 ## Selecting Features for the FNA
 
 To begin, we collect **training samples** to build a model.
 
-- Collect a lot of example images for each class
-- Get our expert to label each image as "Malignant" or "Benign"
-- Measure the features of interest (image analysis or by hand)
-- Build a histogram of the measured feature
+<div class="txt-left">
+<ul>
+<li class="fragment">Collect a lot of example images for each class</li>
+<li class="fragment">Get our expert to label each image as "Malignant" or "Benign"</li>
+<li class="fragment">Measure the features of interest (image analysis or by hand)</li>
+<li class="fragment">Build a histogram of the measured feature</li>
+</ul>
+</div>
 
 ## Texture of the Nuclei
 
@@ -235,9 +242,11 @@ To begin, we collect **training samples** to build a model.
 
 ## Characteristics of Good Features
 
-- **Descriptive:** Similar within a class, and different between classes
-- **Relevant:** Features should make sense
-- **Invariant:** Not dependent on how you measure them
+<div class="txt-left">
+<p class="fragment">**Descriptive:** Similar within a class, and different between classes</p>
+<p class="fragment">**Relevant:** Features should make sense</p>
+<p class="fragment">**Invariant:** Not dependent on how you measure them</p>
+</div>
 
 ## Calculating Probabilities from Features
 
@@ -257,25 +266,21 @@ To begin, we collect **training samples** to build a model.
 
 ## Tradeoff: Variance vs. Generalization
 
-Linear boundaries do not model **variance** and miss obvious trends.
-
-Complex boundaries fit training perfectly, but do not **generalize**.
-
-In general, you want the **simplest** model with the best **performance**.
+<p>Linear boundaries do not model **variance** and miss obvious trends.</p>
+<p class="fragment">Complex boundaries fit training perfectly, but do not **generalize**.</p>
+<p class="fragment">In general, you want the **simplest** model with the best **performance**.</p>
 
 ## Tradeoff: Variance vs. Generalization
 
-Each of these decision boundaries makes errors!
-
-There is always a tradeoff; we need to consider the **cost**.
-
-Cost is defined by our goals and acceptable performance.
+<p>Each of these decision boundaries makes errors!</p>
+<p class="fragment">There is always a tradeoff; we need to consider the **cost**.</p>
+<p class="fragment">Cost is defined by our goals and acceptable performance.</p>
 
 ## Costs
 
 Should we prioritize some kinds of errors over others?
 
-<div class="txt-box">
+<div class="fragment txt-box">
 Not all mistakes carry the same cost. For example:
 
 - A patient is told they have a tumor when they do not (**false positive**)
@@ -294,11 +299,13 @@ Building Blocks for Deep Learning
 
 ## Anatomy of a[n Artificial] Neuron
 
+![](img/ann.png){ width=75% }
+
 ## Simple Perceptron Decision Space
 
 ![Simple Perceptron](img/simple_perceptron_decision_space.png){ width=75% }
 
-## Hidden Layer: Complex, Nonlinear Decision Space
+## Hidden Layers: Complex Decision Space
 
 ![Artificial Neural Network](img/hidden_layer_complex_decision_space.png){ width=75% }
 
@@ -316,7 +323,24 @@ Building Blocks for Deep Learning
 
 ## Training Neural Networks: Finding the Weights
 
-![Backpropagation Schematic](img/backpropagation_schematic.png){ width=40% }
+<div class="l-multiple" style="grid-template-columns: 1.5fr 0.5fr;font-family: 'Caveat';color: #e56a54;">
+<div style="grid-row: 1 / 5; grid-column: 1;">
+![Backpropagation Schematic](img/backpropagation_schematic.png){ width=60% }
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3" style="grid-row: 1; grid-column: 2;">
+Step 3: Calculate error of the result
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="4" style="grid-row: 2; grid-column: 2;">
+Step 4: Calculate gradients and modify weights and biases
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="2" style="grid-row: 3; grid-column: 2;">
+Step 2: Calculate network output
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="1" style="grid-row: 4; grid-column: 2;">
+Step 1: Pick a training example
+</div>
+</div>
+
 
 ## Why Is It Called A "Black Box"?
 
@@ -364,11 +388,13 @@ How Does It Work?
 
 **Deep Learning:** Use the input samples themselves to identify classes
 
-Innovations that make deep learning possible:
+<p class="fragment">Innovations that make deep learning possible:</p>
 
-- Large amounts of well-annotated data
-- Commodity-level, highly parallel hardware
-- Innovations in training algorithms
+<ul>
+<li class="fragment">Large amounts of well-annotated data</li>
+<li class="fragment">Commodity-level, highly parallel hardware</li>
+<li class="fragment">Innovations in training algorithms</li>
+</ul>
 </div>
 
 ## Simple Example: MNIST Handwriting Dataset
@@ -456,17 +482,17 @@ Innovations that make deep learning possible:
 ## How Do You Know?
 
 <div class="l-double">
-<div class="txt-left">
+<div class="txt-left" style="width: 100%;">
 Let's do some quick **calculations**...
 
 - Number of pixels: $64\times64=4,096$
 - Color values: $4,096\times3=12,288$
 
-With just over **12,000 values**, our brains can identify the type of object in this image.
+<p class="fragment">With just over **12,000 values**, our brains can identify the type of object in this image.</p>
 
-That seems like a lot, but for a computer, that's just **12kb**!
+<p class="fragment">That seems like a lot, but that's just **12kb** worth of input data!</p>
 
-But we aren't done yet...
+<p class="fragment">But we aren't done yet...</p>
 </div>
 <div>
 ![](img/he_cell01_resized.png){width=80%}
@@ -483,24 +509,28 @@ But we aren't done yet...
 - Input-to-Hidden Weights: 294 Million
 - Output Classes: 3
 - Hidden-to-Output Weights: 882 Million
-- **Total Weights: 1.17 Billion**
-- We need a new approach...
+
+<p class="fragment">**Total Weights: 1.17 Billion**</p>
+
+<p class="fragment">Our brains do a **ton** of computing!</p>
+
+<p class="fragment">We need a new approach...</p>
 
 </div>
 <div>
-![](img/he_cell01_resized.png){width=80%}
+![](img/he_cell02_resized.png){width=80%}
 </div>
 </div>
 
 ## Exploiting Spatial Relationships
 
 <div class="l-double">
-<div class="txt-left">
+<div class="txt-left" style="width: 100%;">
 
-Images are:
+Images have some nice properties:
 
-- **Spatially Localized:** Allows us to restrict the number of weights from input to output
-- **Scale-dependent:** Reducing image scale allows us to find connections between shapes and objects
+<p class="fragment">**Spatially Localized:** Allows us to restrict the number of weights from input to output</p>
+<p class="fragment">**Scale-dependent:** Reducing image scale allows us to find connections between shapes and objects</p>
 </div>
 <div>
 ![](img/he_cell01_resized.png){width=80%}
@@ -570,7 +600,81 @@ Images are:
 </div>
 </div>
 
+# 
 
+## Need for Annotations
+
+The Importance of Data
+
+## Large, Annotated Datasets
+
+<p class="fragment">ML benefits from **large, well-annotated** datasets</p>
+
+<p class="fragment">**Natural** images are abundant, easy-to-label data</p>
+
+<p class="fragment">However, it's not so easy for **pathology**...</p>
+
+## Natural vs. Specialized Image Datasets
+
+<div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr">
+<div>
+![Toddler](img/kenji.jpg){ width=100% }
+</div>
+<div>
+![Dog (Akita)](img/kyoshi.jpg){ width=100% }
+</div>
+<div>
+![Tissue (H&E)](img/he_tissue_sample_imagesearch.jpg){ width=100% }
+</div>
+</div>
+
+## Human Faces Are Well-Annotated
+
+![https://cloud.google.com/vision](img/kenji_imagesearch.png)
+
+## Dog Faces Are Still Common
+
+![https://cloud.google.com/vision](img/kyoshi_imagesearch.png)
+
+## Medical Images are Sparse
+
+![https://cloud.google.com/vision](img/he_imagesearch01.png)
+
+## There Is Some Data However
+
+![https://cloud.google.com/vision](img/he_imagesearch02.png)
+
+## Disparity in Dataset Sizes
+
+![Not Shown: ImageNet (14 Million)](img/image_database_sizes.png)
+
+## Challenges in Building Large Histopathology Datasets
+
+<p class="fragment">**Data Generation:** Limited scope, proprietary software, lack of standards</p>
+
+<p class="fragment">**Data Hosting / Access:** Large, high throughput storage options needed</p>
+
+<p class="fragment">**Annotations:** Difficult, time-consuming, application dependent</p>
+
+## Difficulty in Annotating Samples
+
+<div class="l-double">
+<div>
+![](img/annotation_large_scale.png){ width=100% }
+</div>
+<div>
+![](img/annotation_small_scale.png){ width=100% }
+</div></div>
+
+## Addressing Annotation with Formal Training
+
+<div class="l-double">
+<div>
+![](img/annotation_stations_01.png){ width=100% }
+</div>
+<div>
+![](img/annotation_stations_02.png){ width=100% }
+</div></div>
 
 # 
 
