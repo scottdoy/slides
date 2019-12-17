@@ -192,13 +192,13 @@ Learning from Feature Data
 
 <p class="fragment">**Domain knowledge** identifies useful features.</p>
 
-<p class="fragment">Pathologists already distinguish **beign** from **malignant** tumors.</p>
+<p class="fragment">Pathologists already distinguish **benign** from **malignant** tumors.</p>
 
 <p class="fragment">Our job is to convert **qualitative** features to **quantitative** ones.</p>
 
 ## Building Informative Features
 
-The pathologist lists cell nuclei features of importance:
+The pathologist lists **cell nuclei** features of importance:
 
 <div class="l-double">
 <div>
@@ -264,7 +264,7 @@ To begin, we collect **training samples** to build a model.
 
 <iframe frameborder="0" seamless='seamless' scrolling=no src="plots/scatter_plot.html"></iframe>
 
-## Tradeoff: Variance vs. Generalization
+## Variance vs. Generalization
 
 <p>Linear boundaries do not model **variance** and miss obvious trends.</p>
 <p class="fragment">Complex boundaries fit training perfectly, but do not **generalize**.</p>
@@ -670,10 +670,10 @@ The Importance of Data
 
 <div class="l-double">
 <div>
-![](img/annotation_stations_01.png){ width=100% }
+![](img/annotation_stations_01.jpg){ width=100% }
 </div>
 <div>
-![](img/annotation_stations_02.png){ width=100% }
+![](img/annotation_stations_02.jpg){ width=100% }
 </div></div>
 
 # 
