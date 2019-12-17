@@ -60,7 +60,7 @@ $selectionColor: $backgroundColor;
 
 // Include theme-specific fonts
 @import url('../../lib/font/public-sans/public-sans.css');
-@import url('../../lib/font/caveat/caveat.css');
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
 
 // Theme template ------------------------------
 @import '../template/theme';
