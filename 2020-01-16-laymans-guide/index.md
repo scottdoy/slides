@@ -6,7 +6,7 @@ slide-level: 2
 
 author: Scott Doyle
 contact: scottdoy@bufalo.edu
-title: Machine Learning and Deep Learning
+title: Machine Learning and AI
 subtitle: A Layman's Guide
 date: 2020-01-16
 ---
@@ -168,7 +168,7 @@ Paik et al., N Engl J Med (2004)
 ![](img/ata06.png){ height=356 width=456 }
 </div>
 <div style="grid-row: 2;">
-![](img/ata07.png){ height=356 width=456 }
+![](img/ata07.png){ height=356 width=456 **
 </div>
 </div>
 
