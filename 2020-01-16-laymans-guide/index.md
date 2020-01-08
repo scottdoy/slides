@@ -6,7 +6,7 @@ slide-level: 2
 
 author: Scott Doyle
 contact: scottdoy@bufalo.edu
-title: Machine Learning and AI
+title: Traditional and Deep Learning
 subtitle: A Layman's Guide
 date: 2020-01-16
 ---
