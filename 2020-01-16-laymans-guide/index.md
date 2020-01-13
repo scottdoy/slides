@@ -168,7 +168,7 @@ Paik et al., N Engl J Med (2004)
 ![](img/ata06.png){ height=356 width=456 }
 </div>
 <div style="grid-row: 2;">
-![](img/ata07.png){ height=356 width=456 **
+![](img/ata07.png){ height=356 width=456 }
 </div>
 </div>
 
