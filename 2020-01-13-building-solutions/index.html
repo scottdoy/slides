@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Building Solutions</title>
+
+    <meta name="description" content="Building Solutions">
+
+        <meta name="author" content="Scott Doyle" />
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <!-- Set Theme -->
+        <link rel="stylesheet" href="css/theme/scottdoy.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/atelier-dune-light.css">
+    
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+          </head>
+
+  <body>
+
+  
+  <div class="reveal">
+    <div class="slides">
+      <!-- Custom Title Section Here -->
+      <section data-background="#005bbb" id="particles-js" class="level1">
+        <section id="title" class="level2">
+        <h1 style="color: #e4e4e4;">Building Solutions</h1>
+        <p>
+        <h2 style="color: #e4e4e4;">ML Design for Pathology</h2>
+        </p>
+        <p style="color: #e4e4e4;"><small>Scott Doyle / scottdoy@buffalo.edu</small></p>
+        <p style="color: #e4e4e4;"><small>2020-01-13</small></p>
+        </section>
+      </section>
+
+      <!-- Custom TOC Section here-->
+      
+      <!-- Insert Body -->
+      <section id="section" class="level1">
+      <h1></h1>
+      <section id="machine-learning-definitions" class="level2">
+      <h2>Machine Learning Definitions</h2>
+      <p><strong>Machine Learning</strong> (ML) uses <strong>collected data</strong> to do something useful.</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Find underlying patterns (<strong>knowledge discovery</strong>)
+      </li>
+      <li class="fragment">
+      Simplify a complex phenomenon (<strong>model building</strong>)
+      </li>
+      <li class="fragment">
+      Place data into categories (<strong>classification</strong>)
+      </li>
+      <li class="fragment">
+      Predict future data (<strong>regression</strong>)
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="machine-learning-definitions-1" class="level2">
+      <h2>Machine Learning Definitions</h2>
+      <p>The job of the ML expert is to:</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Understand and identify the <strong>goal</strong>
+      </li>
+      <li class="fragment">
+      Collect <strong>data</strong>
+      </li>
+      <li class="fragment">
+      Select an appropriate <strong>model</strong> or <strong>algorithm</strong>
+      </li>
+      <li class="fragment">
+      Evaluate the system in terms of <strong>costs</strong>
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="types-of-machine-learning" class="level2">
+      <h2>Types of Machine Learning</h2>
+      <div class="l-double">
+      <div>
+      <p><strong>Supervised Learning</strong></p>
+      <p class="fragment">
+      Use <strong>labeled datasets</strong> to classify new, unseen data
+      </p>
+      </div>
+      <div>
+      <p><strong>Unsupervised Learning</strong></p>
+      <p class="fragment">
+      Use <strong>unlabeled data</strong> to identify natural groups
+      </p>
+      </div>
+      </div>
+      <div class="l-double">
+      <div>
+      <p><strong>Semi-Supervised Learning</strong></p>
+      <p class="fragment">
+      Use <strong>partially labeled</strong> data to handle the process
+      </p>
+      </div>
+      <div>
+      <p><strong>Reinforcement Learning</strong></p>
+      <p class="fragment">
+      An <strong>agent</strong> learns to complete a task <strong>policy</strong> of rewards
+      </p>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-1" class="level1">
+      <h1></h1>
+      <section id="data-definitions" class="level2">
+      <h2>Data Definitions</h2>
+      <p>The starting point for all ML algorithms is <strong>data</strong>.</p>
+      <p class="fragment">
+      So… what do we mean by “data”?
+      </p>
+      </section>
+      <section id="data-comes-in-many-forms" class="level2">
+      <h2>Data Comes in Many Forms</h2>
+      <figure>
+      <img src="img/data_formats.png" alt="Complex, Multi-Modal Data" style="width:70.0%" /><figcaption>Complex, Multi-Modal Data</figcaption>
+      </figure>
+      </section>
+      <section id="computational-pathology-expression-of-disease-state" class="level2">
+      <h2>Computational Pathology:<br/> Expression of Disease State</h2>
+      <p class="fragment">
+      Biological structure is <strong>primary data</strong>.
+      </p>
+      <p class="fragment">
+      We can quantify <strong>biological structure</strong>.
+      </p>
+      <p class="fragment">
+      We can <strong>model</strong> relationships between <strong>structure and disease</strong>.
+      </p>
+      </section>
+      <section id="fundamental-hypothesis" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div class="fragment l-double">
+      <div>
+      <p><img src="img/badve2008_fig4b1.svg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/badve2008_fig4b2.svg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      <p class="fragment" style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="fundamental-hypothesis-1" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div>
+      <p><img src="img/paik2004_fig2.svg" style="width:80.0%" /></p>
+      </div>
+      <p style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="data-fusion-improves-predictions" class="level2">
+      <h2>Data Fusion Improves Predictions</h2>
+      <div class="l-multiple" style="grid-template-columns: auto auto auto;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_quanthisto.png" alt="Quantitative Histology" style="height:30.0%" /><figcaption>Quantitative Histology</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_lowdim1.png" alt=" " style="height:30.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1 / span 2;vertical-align: middle;">
+      <figure>
+      <img src="img/lee2015_combined.png" alt="Combined Embeddings" style="height:30.0%" /><figcaption>Combined Embeddings</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_massspect.png" alt="Mass Spectrometry" style="height:30.0%" /><figcaption>Mass Spectrometry</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_lowdim2.png" alt="Low-Dimensional Embeddings" style="height:30.0%" /><figcaption>Low-Dimensional Embeddings</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      <section id="atoms-to-anatomy-paradigm" class="level2">
+      <h2>Atoms to Anatomy Paradigm</h2>
+      <div class="l-multiple" style="grid-template-columns: 1.5fr 1fr 1fr 1fr; row-gap:0;">
+      <div style="grid-row: 1 / span 2;">
+      <p><img src="img/ata01.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata02.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata03.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata04.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata05.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata06.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata07.png" width="456" height="356" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="building-a-machine-learning-solution" class="level2">
+      <h2>Building a Machine Learning Solution</h2>
+      <p>How do we begin a machine learning project?</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      What are the concerns with <strong>pathology</strong> in particular?
+      </li>
+      <li class="fragment">
+      What kinds of questions will help <strong>save time, effort, and money?</strong>
+      </li>
+      <li class="fragment">
+      How should we <strong>interface</strong> with collaborators?
+      </li>
+      </ul>
+      </div>
+      </section>
+      </section>
+      <section id="section-2" class="level1">
+      <h1></h1>
+      <section id="design-process" class="level2">
+      <h2>Design Process</h2>
+      <p>A Brief Overview</p>
+      </section>
+      <section id="overall-process" class="level2">
+      <h2>Overall Process</h2>
+      <figure>
+      <img src="img/ml_design_overview.svg" alt="Design Process Overview" style="width:100.0%" /><figcaption>Design Process Overview</figcaption>
+      </figure>
+      </section>
+      </section>
+      <section id="section-3" class="level1">
+      <h1></h1>
+      <section id="assess-the-problem" class="level2">
+      <h2>Assess the Problem</h2>
+      <figure>
+      <img src="img/ml_design_01_assess.svg" alt="Define Scope, Goals, and Environment" style="width:100.0%" /><figcaption>Define Scope, Goals, and Environment</figcaption>
+      </figure>
+      </section>
+      <section id="problem-statement" class="level2">
+      <h2>Problem Statement</h2>
+      <p>What is the problem statement, in <strong>one sentence</strong>?</p>
+      <p class="fragment">
+      NOT the machine learning task, just the gap that needs to be addressed.
+      </p>
+      </section>
+      <section id="problem-statement-1" class="level2">
+      <h2>Problem Statement</h2>
+      <blockquote>
+      <p>Pathologists must review cytology slides to identify malignant versus benign tumors.</p>
+      </blockquote>
+      </section>
+      <section id="current-solutions" class="level2">
+      <h2>Current Solutions</h2>
+      <p>What is the <strong>current solution</strong>?</p>
+      <p class="fragment">
+      How is the problem currently addressed, if at all?
+      </p>
+      <p class="fragment">
+      What data is currently routinely collected?
+      </p>
+      </section>
+      <section id="current-solutions-1" class="level2">
+      <h2>Current Solutions</h2>
+      <blockquote>
+      <p>Based on cytology images, we can determine by eye whether a sample is benign or malignant.</p>
+      </blockquote>
+      </section>
+      <section id="domain-expertise" class="level2">
+      <h2>Domain Expertise</h2>
+      <strong>Listen</strong> to your potential users – they are the experts!
+      <p class="fragment">
+      <strong>Domain knowledge</strong> identifies useful features.
+      </p>
+      <p class="fragment">
+      Pathologists already distinguish <strong>benign</strong> from <strong>malignant</strong> tumors.
+      </p>
+      <p class="fragment">
+      Our job is to convert <strong>qualitative</strong> features to <strong>quantitative</strong> ones.
+      </p>
+      </section>
+      <section id="building-informative-features" class="level2">
+      <h2>Building Informative Features</h2>
+      <p>The pathologist lists <strong>cell nuclei</strong> features of importance:</p>
+      <div class="l-double">
+      <div>
+      <ol type="1">
+      <li>Radius</li>
+      <li>Texture</li>
+      <li>Perimeter</li>
+      <li>Area</li>
+      <li>Smoothness</li>
+      </ol>
+      </div>
+      <div>
+      <ol start="6" type="1">
+      <li>Compactness</li>
+      <li>Concavity</li>
+      <li>Concave Points</li>
+      <li>Symmetry</li>
+      <li>Fractal Dimension</li>
+      </ol>
+      </div>
+      </div>
+      </section>
+      <section id="data-understanding" class="level2">
+      <h2>Data Understanding</h2>
+      <p><strong>Look at</strong> the data that is currently collected for your problem!</p>
+      <p><span class="fragment"> <em>“A picture might be worth a thousand words; a formula is worth a thousand pictures.”</em> <span style="align: right"><sub>Dr. Edsger Dijkstra</sub></span> </span></p>
+      </section>
+      <section id="fine-needle-aspirates" class="level2">
+      <h2>Fine Needle Aspirates</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" /><figcaption>Benign FNA Image</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" /><figcaption>Malignant FNA Image</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      <section id="performance-targets" class="level2">
+      <h2>Performance Targets</h2>
+      <p>What is the goal of your system?</p>
+      <p class="fragment">
+      How will the success of the system be assessed?
+      </p>
+      <p class="fragment">
+      This determines your <strong>overall performance measure</strong>.
+      </p>
+      </section>
+      <section id="questions-to-ask" class="level2">
+      <h2>Questions to Ask</h2>
+      <ol type="1">
+      <li>How much data do we have?</li>
+      <li>Does the data have labels associated with it? (Supervised vs. Unsupervised)</li>
+      <li>How expensive is it to acquire more data (time, effort, cost)?</li>
+      <li>What type of ML are you performing?</li>
+      <li><em>Assuming you succeed</em>, what is the benefit?</li>
+      </ol>
+      </section>
+      <section id="assessing-the-problem" class="level2">
+      <h2>Assessing the Problem</h2>
+      <p>At this point…</p>
+      <h1 class="fragment" style="color: red;">
+      STOP!
+      </h1>
+      <p class="fragment">
+      Is machine learning the right tool for the job?
+      </p>
+      </section>
+      <section id="machine-learning-flowchart" class="level2">
+      <h2>Machine Learning Flowchart</h2>
+      <p><img src="img/ml_map.png" style="width:80.0%" /></p>
+      </section>
+      <section id="assessing-machine-learning" class="level2">
+      <h2>Assessing Machine Learning</h2>
+      <p>Machine learning is <strong>NOT</strong> always the right choice.</p>
+      <p class="fragment">
+      <strong>The sooner you identify whether ML will help, the better!</strong>
+      </p>
+      </section>
+      <section id="identify-the-ml-task" class="level2">
+      <h2>Identify the ML Task</h2>
+      <p>Having decided on an ML approach, <strong>state the ML task to be completed.</strong></p>
+      <p class="fragment">
+      Similar to a problem statement, but a proposed solution to the problem.
+      </p>
+      <p class="fragment">
+      Also similar to the <strong>hypothesis statement</strong> for a scientific proposal.
+      </p>
+      </section>
+      <section id="stated-ml-task" class="level2">
+      <h2>Stated ML Task</h2>
+      <blockquote>
+      <p>Given a digital FNA image, we can use image features to predict whether a patient’s tumor is benign or malignant.</p>
+      </blockquote>
+      </section>
+      </section>
+      <section id="section-4" class="level1">
+      <h1></h1>
+      <section id="acquire-and-explore-the-data" class="level2">
+      <h2>Acquire and Explore the Data</h2>
+      <figure>
+      <img src="img/ml_design_02_data.svg" alt="Acquire, Split, and Visualize Dataset" style="width:100.0%" /><figcaption>Acquire, Split, and Visualize Dataset</figcaption>
+      </figure>
+      </section>
+      <section id="getting-the-raw-data" class="level2">
+      <h2>Getting the Raw Data</h2>
+      <p>How you acquire the dataset is project-specific.</p>
+      <p class="fragment">
+      However, do <strong>NOT</strong> put this off!
+      </p>
+      <p class="fragment">
+      Sensitive data (government, military, healthcare) may be difficult to obtain, be embargoed, or censored.
+      </p>
+      </section>
+      <section id="dataset-characteristics" class="level2">
+      <h2>Dataset Characteristics</h2>
+      <p>Questions about the dataset:</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      What type of data is it?
+      </li>
+      <li class="fragment">
+      What is the volume of data (in disk size)?
+      </li>
+      <li class="fragment">
+      What metadata is associated with the dataset?
+      </li>
+      <li class="fragment">
+      Where will it be stored and accessed?
+      </li>
+      <li class="fragment">
+      How will it be labeled and documented?
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="quickly-look-at-the-data-structure" class="level2">
+      <h2>Quickly Look at the Data Structure</h2>
+      <p>Ensure that the downloaded data contains what you expect.</p>
+      <p>For <strong>images</strong>, look at them!</p>
+      <pre class="{python}"><code>
+      import matplotlib.pyplot as plt
+      plt.imshow(data_sample)
+      plt.show()</code></pre>
+      <p>For <strong>spreadsheets</strong>, print their contents!</p>
+      <pre class="{python}"><code>  
+      import pandas as pd
+      dataset = pd.load_csv(path_to_csv_file)
+      dataset.head()
+      dataset.info()</code></pre>
+      </section>
+      <section id="training-and-testing-set" class="level2">
+      <h2>Training and Testing Set</h2>
+      <p>At <strong>this point</strong> you should split the data into a “training” and “testing” set.</p>
+      <p class="fragment">
+      This protects against <strong>data snooping bias</strong>!
+      </p>
+      <p class="fragment">
+      Model design should be completely blind to testing data, to prevent potential overfitting.
+      </p>
+      <p class="fragment">
+      If you can hold off on retrieving testing data in the first place, even better!
+      </p>
+      </section>
+      <section id="training-and-testing-split" class="level2">
+      <h2>Training and Testing Split</h2>
+      <p>How much data should go into training and testing?</p>
+      <p class="fragment">
+      Approximately <strong><span class="math inline">$\frac{2}{3}$</span></strong> in training, <strong><span class="math inline">$\frac{1}{3}$</span></strong> in testing.
+      </p>
+      <p class="fragment">
+      How should you split your training and testing?
+      </p>
+      <p class="fragment">
+      <strong>Random</strong> versus <strong>Stratified</strong> splitting?
+      </p>
+      </section>
+      <section id="random-vs.-stratified-sampling" class="level2">
+      <h2>Random vs. Stratified Sampling</h2>
+      <strong>Random Sampling</strong>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Randomly assign samples to training and testing
+      </li>
+      <li class="fragment">
+      Use a unique <code>id</code> for each sample to ensure reproducibility
+      </li>
+      <li class="fragment">
+      Useful in <strong>unlabeled datasets</strong>
+      </li>
+      <li class="fragment">
+      May lead to <strong>class balance problems</strong>
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="random-sampling-example" class="level2">
+      <h2>Random Sampling Example</h2>
+      <pre class="{python}"><code>
+      # Import functions to calculate a hash for the dataset
+      from zlib import crc32
+      
+      def test_set_check(identifier, test_ratio):
+          &#39;&#39;&#39;Return a boolean that states whether the current sample should be included in the testing set.
+          
+          Calculates a hash value from an identifier, and returns True if the value is in the bottom 
+          (test_ratio)-percent of the maximum possible hash value.
+          &#39;&#39;&#39;
+          return crc32(np.int64(identifier)) &amp; 0xffffffff &lt; test_ratio * 2**32
+      
+      def split_train_test_by_id(data, test_ratio, id_column):
+          &#39;&#39;&#39;Return training and testing dataframes given a test ratio and column to use for computing sample hash.
+          
+          Uses test_set_check to actually compute hash and put the data into training or testing.
+          &#39;&#39;&#39;
+          ids = data[id_column]
+          in_test_set = ids.apply(lambda id_: test_set_check(id_, test_ratio))
+          return data.loc[~in_test_set], data.loc[in_test_set]
+      
+      # Apply the above functions to the dataset
+      train_set, test_set = split_train_test_by_id(df, 0.3, &quot;id&quot;)</code></pre>
+      </section>
+      <section id="random-sampling-class-imbalance" class="level2">
+      <h2>Random Sampling Class Imbalance</h2>
+      <pre class="pre"><code>
+      ================
+       Random Sampling
+      ================
+      
+      Overall class balance:
+      B   0.63
+      M   0.37
+      Name: diagnosis, dtype: float64
+       
+      Train set class ratio:
+      B   0.61
+      M   0.39
+      Name: diagnosis, dtype: float64
+       
+      Test set class ratio:
+      B   0.67
+      M   0.33
+      Name: diagnosis, dtype: float64</code></pre>
+      </section>
+      <section id="random-vs.-stratified-sampling-1" class="level2">
+      <h2>Random vs. Stratified Sampling</h2>
+      <strong>Stratified Sampling</strong>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Maintain <strong>class ratio</strong> in the training and testing cases
+      </li>
+      <li class="fragment">
+      Ensures that train / test evaluation is on <strong>equal terms</strong>
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="stratified-sampling-example" class="level2">
+      <h2>Stratified Sampling Example</h2>
+      <pre class="{python}"><code>
+      # Stratified Split
+      from sklearn.model_selection import StratifiedShuffleSplit
+      
+      # Create the splitting object
+      split = StratifiedShuffleSplit(n_splits=1, test_size=0.3, random_state=42)
+      
+      # Apply the split to the data frame using the &quot;diagnosis&quot; column as our label
+      for train_index, test_index in split.split(df, df[&quot;diagnosis&quot;]):
+          train_set = df.loc[train_index]
+          test_set = df.loc[test_index]</code></pre>
+      </section>
+      <section id="stratified-sampling-class-balance" class="level2">
+      <h2>Stratified Sampling Class Balance</h2>
+      <pre class="{pre}"><code>
+      ====================
+       Stratified Sampling
+      ====================
+      
+      Overall class ratio:
+      B   0.63
+      M   0.37
+      Name: diagnosis, dtype: float64
+       
+      Train set class ratio:
+      B   0.63
+      M   0.37
+      Name: diagnosis, dtype: float64
+       
+      Test set class ratio:
+      B   0.63
+      M   0.37
+      Name: diagnosis, dtype: float64</code></pre>
+      </section>
+      </section>
+      <section id="section-5" class="level1">
+      <h1></h1>
+      <section id="feature-visualization" class="level2">
+      <h2>Feature Visualization</h2>
+      <p>Exploring the Feature Space</p>
+      </section>
+      <section id="visualization-drives-initial-strategy" class="level2">
+      <h2>Visualization Drives Initial Strategy</h2>
+      <p>Looking at the data can provide <strong>insights</strong> into your data.</p>
+      <p class="fragment">
+      You can evaluate natural groupings of samples and potential correlations between features.
+      </p>
+      <p class="fragment">
+      Let’s look at nuclei texture feature as an example for our FNA dataset…
+      </p>
+      </section>
+      <section id="texture-of-the-nuclei" class="level2">
+      <h2>Texture of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/texture_mean.html">
+      </iframe>
+      </section>
+      <section id="average-radius-of-the-nuclei" class="level2">
+      <h2>Average Radius of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/radius_mean.html">
+      </iframe>
+      </section>
+      <section id="characteristics-of-good-features" class="level2">
+      <h2>Characteristics of Good Features</h2>
+      <div class="txt-left">
+      <p class="fragment">
+      <strong>Descriptive:</strong> Similar within a class, and different between classes
+      </p>
+      <p class="fragment">
+      <strong>Relevant:</strong> Features should make sense
+      </p>
+      <p class="fragment">
+      <strong>Invariant:</strong> Not dependent on how you measure them
+      </p>
+      </div>
+      </section>
+      <section id="calculating-probabilities-from-features" class="level2">
+      <h2>Calculating Probabilities from Features</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/pdf_cdf.html">
+      </iframe>
+      </section>
+      <section id="combinations-of-features" class="level2">
+      <h2>Combinations of Features</h2>
+      <p><strong>Combining features</strong> often yields greater class separation.</p>
+      </section>
+      <section id="multivariate-distribution" class="level2">
+      <h2>Multivariate Distribution</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/scatter_histogram_plot.html">
+      </iframe>
+      </section>
+      <section id="multivariate-distribution-1" class="level2">
+      <h2>Multivariate Distribution</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/scatter_plot.html">
+      </iframe>
+      </section>
+      </section>
+      <section id="section-6" class="level1">
+      <h1></h1>
+      <section id="prepare-data" class="level2">
+      <h2>Prepare Data</h2>
+      <figure>
+      <img src="img/ml_design_03_prepare.svg" alt="Data Wrangling and Preprocessing" style="width:80.0%" /><figcaption>Data Wrangling and Preprocessing</figcaption>
+      </figure>
+      </section>
+      <section id="data-cleaning" class="level2">
+      <h2>Data Cleaning</h2>
+      <p>Most data you will receive is <strong>noisy</strong>:</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      <strong>Missing</strong> or <strong>incomplete</strong> values
+      </li>
+      <li class="fragment">
+      <strong>Text</strong> or <strong>categorical</strong> values
+      </li>
+      <li class="fragment">
+      Features which are <strong>poorly scaled</strong>
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="missing-data" class="level2">
+      <h2>Missing Data</h2>
+      <p>When creating a dataset, use a <strong>unique</strong>, <strong>non-numeric</strong> value to fill in missing values.</p>
+      <p class="fragment">
+      Do <strong>not</strong>:
+      </p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Leave cells blank
+      </li>
+      <li class="fragment">
+      Use an “obvious” numeric value (e.g. 99 or -99)
+      </li>
+      <li class="fragment">
+      Use any ambiguous data that could be misinterpreted
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="handling-missing-data" class="level2">
+      <h2>Handling Missing Data</h2>
+      <p>When pre-processing a dataset, decide what to do with missing data:</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      <strong>Drop data</strong> with missing attributes
+      </li>
+      <li class="fragment">
+      <strong>Remove attributes</strong> that are not complete
+      </li>
+      <li class="fragment">
+      <strong>Set missing values</strong> to some other value
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="handling-text-and-categories" class="level2">
+      <h2>Handling Text and Categories</h2>
+      <p>Text and categorical values should be converted to numeric values.</p>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      <strong>Ordinal values</strong> can be placed in some (“Low”, “Intermediate”, “High”)
+      </li>
+      <li class="fragment">
+      <strong>Non-ordinal values</strong> cannot be placed in order (blood type A or B)
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="ordinal-encoding" class="level2">
+      <h2>Ordinal Encoding</h2>
+      <p>Ordinal values can be converted directly into numbers:</p>
+      <div class="txt-left">
+      <ul>
+      <li>Low = 0</li>
+      <li>Intermediate = 1</li>
+      <li>High = 2</li>
+      </ul>
+      </div>
+      </section>
+      <section id="ordinal-encoding-1" class="level2">
+      <h2>Ordinal Encoding</h2>
+      <pre class="{python}"><code>
+      from sklearn.preprocessing import OrdinalEncoder
+      ordinal_encoder = OrdinalEncoder()</code></pre>
+      </section>
+      <section id="one-hot-encoding" class="level2">
+      <h2>One-Hot Encoding</h2>
+      <p>Non-ordinal values can be encoded with <strong>one-hot encoding</strong>:</p>
+      <p class="fragment">
+      Replace the feature with <span class="math inline"><em>N</em></span> new features, where <span class="math inline"><em>N</em></span> is the number of categories. Each of the new features is <em>binary</em>, meaning it’s only 0 or 1.
+      </p>
+      </section>
+      <section id="one-hot-encoding-1" class="level2">
+      <h2>One-Hot Encoding</h2>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>id</th>
+      <th>Blood Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>001</td>
+      <td>A</td>
+      </tr>
+      <tr class="even">
+      <td>002</td>
+      <td>B</td>
+      </tr>
+      <tr class="odd">
+      <td>003</td>
+      <td>B</td>
+      </tr>
+      <tr class="even">
+      <td>004</td>
+      <td>A</td>
+      </tr>
+      <tr class="odd">
+      <td>005</td>
+      <td>B</td>
+      </tr>
+      </tbody>
+      </table>
+      </section>
+      <section id="one-hot-encoding-2" class="level2">
+      <h2>One-Hot Encoding</h2>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>id</th>
+      <th>Type A</th>
+      <th>Type B</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>001</td>
+      <td>1</td>
+      <td>0</td>
+      </tr>
+      <tr class="even">
+      <td>002</td>
+      <td>0</td>
+      <td>1</td>
+      </tr>
+      <tr class="odd">
+      <td>003</td>
+      <td>0</td>
+      <td>1</td>
+      </tr>
+      <tr class="even">
+      <td>004</td>
+      <td>1</td>
+      <td>0</td>
+      </tr>
+      <tr class="odd">
+      <td>005</td>
+      <td>0</td>
+      <td>1</td>
+      </tr>
+      </tbody>
+      </table>
+      </section>
+      <section id="one-hot-encoding-3" class="level2">
+      <h2>One-Hot Encoding</h2>
+      <pre class="{python}"><code>
+      from sklearn.preprocessing import OneHotEncoder
+      cat_encoder = OneHotEncoder()</code></pre>
+      </section>
+      <section id="label-encoding" class="level2">
+      <h2>Label Encoding</h2>
+      <pre class="{python}"><code>
+      from sklearn.preprocessing import LabelEncoder
+      label_encoder = LabelEncoder()
+      
+      diagnosis_cat = df[&#39;diagnosis&#39;]
+      
+      # Fit the encoder to the categories, and immediately 
+      diagnosis_lab = label_encoder.fit_transform(diagnosis_cat)
+      
+      # Add the diagnosis label back to the dataframe
+      df[&#39;diagnosis_label&#39;] = diagnosis_lab</code></pre>
+      </section>
+      <section id="feature-scaling" class="level2">
+      <h2>Feature Scaling</h2>
+      <p>Data should always be scaled.</p>
+      <p class="fragment">
+      Scaling should be calculated <strong>only on the training set</strong>, and the proper transform applied to testing.
+      </p>
+      </section>
+      <section id="feature-scaling-min-max-scaling" class="level2">
+      <h2>Feature Scaling: Min-Max Scaling</h2>
+      <p><strong>Min-Max Scaling / Normalization</strong>: <br /><span class="math display">$$ x = \frac{x - \min{(x)}}{\max{(x - \min{(x)})}} $$</span><br /></p>
+      </section>
+      <section id="feature-scaling-standardization" class="level2">
+      <h2>Feature Scaling: Standardization</h2>
+      <p><strong>Standardization</strong>: <br /><span class="math display">$$ x = \frac{x - \mu}{\sigma} $$</span><br /></p>
+      <p><span class="fragment"> Not bounded to any specific range, which may be a problem (e.g. for neural networks expecting a 0-1 value), but much less affected by outliers. </span></p>
+      </section>
+      <section id="code-considerations" class="level2">
+      <h2>Code Considerations</h2>
+      <p>Always write code to do your feature pre-processing.</p>
+      <p>You will be able to apply the same transforms each time, even if datasets grow.</p>
+      </section>
+      </section>
+      <section id="section-7" class="level1">
+      <h1></h1>
+      <section id="model-selection-and-training" class="level2">
+      <h2>Model Selection and Training</h2>
+      <figure>
+      <img src="img/ml_design_04_model_selection.svg" alt="Training and Cross-Validation" style="width:80.0%" /><figcaption>Training and Cross-Validation</figcaption>
+      </figure>
+      </section>
+      <section id="overall-objective" class="level2">
+      <h2>Overall Objective</h2>
+      <p>Model selection is an <strong>art</strong> rather than a <strong>science</strong>.</p>
+      <p>Recall Occum’s Razor:</p>
+      <blockquote>
+      <p>Given a set of possible solutions, the one which makes the fewest assumptions is preferable.</p>
+      </blockquote>
+      <p>Also often restated as: The simplest solution is best!</p>
+      </section>
+      <section id="simple-model-linear-discriminant" class="level2">
+      <h2>Simple Model: Linear Discriminant</h2>
+      <p>So what does a “simple model” mean?</p>
+      <p>Start looking at linear methods, like a <code>LinearDiscriminant</code>:</p>
+      <pre class="{python}"><code>
+      from sklearn.lda import LDA
+      
+      lin_disc = LDA()
+      lin_disc.fit(training_data, training_labels)
+      
+      training_predictions = lin_disc.predict(training_data[:10,:])
+      </code></pre>
+      </section>
+      <section id="simple-model-linear-regression" class="level2">
+      <h2>Simple Model: Linear Regression</h2>
+      <p>Check the performance of this system using root-mean-square error:</p>
+      <pre class="{python}"><code>
+      from sklearn.metrics import mean_squared_error
+      lin_mse = mean_squared_error(training_labels[:10], training_predictions)
+      lin_rmse = np.sqrt(lin_mse)
+      print(&quot;Linear Regressor Root Mean Squared Error: &quot;, lin_rmse)</code></pre>
+      </section>
+      <section id="complex-model-support-vector-machines" class="level2">
+      <h2>Complex Model: Support Vector Machines</h2>
+      <p>We can compare this model to more complex ones, like a support vector machine:</p>
+      <pre class="{python}"><code>
+      from sklearn.svm import SVC
+      
+      svm_model = SVC()
+      svm_model.fit(training_data, training_labels)
+      
+      training_predictions = svm_model.predict(training_data[:10,:])
+      
+      svm_mse = mean_squared_error(training_labels[:10], training_predictions)
+      svm_rmse = np.sqrt(svm_mse)
+      print(&quot;Support Vector Machine Root Mean Squared Error: &quot;, svm_rmse)</code></pre>
+      </section>
+      <section id="training-and-evaluating-on-training-set" class="level2">
+      <h2>Training and Evaluating on Training Set</h2>
+      <p>Evaluation on subsets of training data is the <strong>best possible outcome</strong>!</p>
+      <p class="fragment">
+      Since the system has trained on this data, it is more likely to do well.
+      </p>
+      <p class="fragment">
+      Complex models are likely to get 100% performance: This is <strong>overfitting</strong>!
+      </p>
+      </section>
+      <section id="variance-vs.-generalization" class="level2">
+      <h2>Variance vs. Generalization</h2>
+      Simple linear boundaries do not model <strong>variance</strong> and miss obvious trends.
+      <p class="fragment">
+      Complex boundaries fit training perfectly, but do not <strong>generalize</strong>.
+      </p>
+      <p class="fragment">
+      In general, you want the <strong>simplest</strong> model with the best <strong>performance</strong>.
+      </p>
+      </section>
+      <section id="tradeoff-variance-vs.-generalization" class="level2">
+      <h2>Tradeoff: Variance vs. Generalization</h2>
+      Each of these decision boundaries makes errors!
+      <p class="fragment">
+      There is always a tradeoff; we need to consider the <strong>cost</strong>.
+      </p>
+      <p class="fragment">
+      Cost is defined by our goals and acceptable performance.
+      </p>
+      </section>
+      <section id="costs" class="level2">
+      <h2>Costs</h2>
+      <p>Should we prioritize some kinds of errors over others?</p>
+      <div class="fragment txt-box">
+      <p>Not all mistakes carry the same cost. For example:</p>
+      <ul>
+      <li>A patient is told they have a tumor when they do not (<strong>false positive</strong>)</li>
+      <li>A patient is told they are cancer-free when they are not (<strong>false negative</strong>)</li>
+      </ul>
+      </div>
+      </section>
+      <section id="revisiting-train-test-splits" class="level2">
+      <h2>Revisiting Train / Test Splits</h2>
+      <p>To get a <strong>real</strong> sense of the performance of your system, you should train on your training data and then evaluate on testing data:</p>
+      <pre class="{python}"><code>
+      testing_predictions = svm_model.predict(testing_data)
+      svm_mse = mean_squared_error(training_labels, training_predictions)
+      svm_rmse = np.sqrt(svm_mse)
+      print(&quot;Support Vector Machine Root Mean Squared Error: &quot;, svm_rmse)</code></pre>
+      <p class="fragment">
+      However: What if you (randomly) get a really good or bad testing set?
+      </p>
+      </section>
+      <section id="cross-validation" class="level2">
+      <h2>Cross-Validation</h2>
+      <p>What if you could create several train / test splits, with all of the benefits we discussed earlier?</p>
+      <p class="fragment">
+      This is <strong>cross-validation</strong>: Break the dataset into several (distinct) training and testing sets, and then perform training and testing on each one.
+      </p>
+      </section>
+      <section id="cross-validation-1" class="level2">
+      <h2>Cross-Validation</h2>
+      <p>This can be easily done in <code>scikit-learn</code>:</p>
+      <pre class="{python}"><code>
+      from sklearn.model_selection import cross_val_score
+      
+      scores = cross_val_score(svm_model, training_data, training_labels,
+      scoring=&quot;neg_mean_squared_error&quot;, cv=10)
+      svm_rmse_scores = np.sqrt(-scores)
+      
+      # Display scores
+      def display_scores(scores):
+      print(&quot;Scores: &quot;, scores)
+      print(&quot;Mean: &quot;, scores.mean())
+      print(&quot;Standard Deviation: &quot;, scores.std())
+      
+      display_scores(svm_rmse_scores)</code></pre>
+      </section>
+      <section id="cross-validation-reporting" class="level2">
+      <h2>Cross-Validation Reporting</h2>
+      <p>Now you have a way to robustly compare models.</p>
+      <p class="fragment">
+      After you pick a model, it’s time to <strong>make it better!</strong>
+      </p>
+      </section>
+      </section>
+      <section id="section-8" class="level1">
+      <h1></h1>
+      <section id="fine-tuning-and-evaluation" class="level2">
+      <h2>Fine-Tuning and Evaluation</h2>
+      <p><img src="img/ml_design_05_fine_tuning.svg" style="width:80.0%" /></p>
+      </section>
+      <section id="parameters-and-hyperparameters" class="level2">
+      <h2>Parameters and Hyperparameters</h2>
+      <p>There are <strong>a lot</strong> of “knobs” you can turn to opitimize a model.</p>
+      <p>If you’ve robustly quantified model performance, now it’s okay to tweak away.</p>
+      </section>
+      <section id="parameter-optimization" class="level2">
+      <h2>Parameter Optimization</h2>
+      <p>This process is <strong>parameter optimization:</strong> trying all the parameters to see which gives you the best performance.</p>
+      </section>
+      <section id="side-note-pipelines-in-python" class="level2">
+      <h2>Side Note: Pipelines in Python</h2>
+      <p><code>scikit-learn</code> enables you to build <strong>pipelines</strong> to process your data.</p>
+      <p>These allow you to build a list of different values to try, plus a scoring function, and then returns the <strong>best</strong> numbers out of what it’s tried.</p>
+      </section>
+      <section id="grid-search-build-a-pipeline" class="level2">
+      <h2>Grid Search: Build a Pipeline</h2>
+      <pre class="{python}"><code>
+      from sklearn.pipeline import Pipeline
+      
+      pipe = Pipeline(steps=[
+          (&#39;classification&#39;, classifier)
+      ])</code></pre>
+      </section>
+      <section id="grid-search-define-the-grid-of-parameters" class="level2">
+      <h2>Grid Search: Define the Grid of Parameters</h2>
+      <pre class="{python}"><code>
+      from sklearn.model_selection import GridSearchCV
+      
+      # Set the parameters by cross-validation
+      param_grid = {
+          &#39;classification__kernel&#39;: [&#39;rbf&#39;],
+          &#39;classification__gamma&#39;: [1e-1, 1e-2, 1e-3, 1e-4],
+          &#39;classification__C&#39;: [1, 1e1, 1e2, 1e3],
+      }
+      </code></pre>
+      </section>
+      <section id="grid-search-build-a-model-and-evaluate-it" class="level2">
+      <h2>Grid Search: Build a Model and Evaluate It</h2>
+      <pre class="{python}"><code>
+      svm_model = SVC()
+      
+      grid_search = GridSearchCV(svm_model, param_grid, cv=5,
+                                 scoring=&#39;neg_mean_squared_error&#39;,
+                                 return_train_score=True)
+      
+      grid_search.fit(training_data, training_labels)</code></pre>
+      </section>
+      <section id="evaluate-on-test-set" class="level2">
+      <h2>Evaluate on Test Set</h2>
+      <p>Finally, you can predict labels on your testing set:</p>
+      <pre class="{python}"><code>
+      final_model = grid_search.best_estimator_
+      
+      final_predictions = final_model.predict(testing_data)
+      
+      final_mse = mean_squared_error(testing_labels, final_predictions)
+      final_rmse = np.sqrt(final_mse)</code></pre>
+      </section>
+      </section>
+      <section id="section-9" class="level1">
+      <h1></h1>
+      <section id="feedback-loop-production" class="level2">
+      <h2>Feedback Loop (Production)</h2>
+      <p><img src="img/ml_design_06_feedback.svg" style="width:80.0%" /></p>
+      </section>
+      <section id="feedback-importance" class="level2">
+      <h2>Feedback Importance</h2>
+      <p>This section is <strong>very</strong> implementation dependent.</p>
+      <p class="fragment">
+      However, there are a few steps…
+      </p>
+      </section>
+      <section id="list-of-feedback-steps" class="level2">
+      <h2>List of Feedback Steps</h2>
+      <div class="txt-left">
+      <ol>
+      <li class="fragment">
+      Write tests to ingest production inputs into the system
+      </li>
+      <li class="fragment">
+      Write monitoring code to check live performance
+      </li>
+      <li class="fragment">
+      Write code for input Quality Assurance
+      </li>
+      <li class="fragment">
+      Periodically audit the system by re-training on new data
+      </li>
+      <li class="fragment">
+      Create auto backups and snapshots of long-running models
+      </li>
+      </ol>
+      </div>
+      </section>
+      </section>
+      <section id="section-10" class="level1">
+      <h1></h1>
+      <section id="concluding-remarks" class="level2">
+      <h2>Concluding Remarks</h2>
+      <p>Takeaway Thoughts</p>
+      </section>
+      <section id="team-science" class="level2">
+      <h2>Team Science</h2>
+      <p>You will often be working as part of a team.</p>
+      <p class="fragment">
+      You may only be responsible for some of the workflow steps…
+      </p>
+      <p class="fragment">
+      … But understanding them is critical to making your project successful.
+      </p>
+      </section>
+      </section>
+      <section id="section-11" class="level1">
+      <h1></h1>
+      <section id="thank-you" class="level2">
+      <h2>Thank You!</h2>
+      </section>
+      </section>
+      <section id="section-12" class="level1">
+      <h1></h1>
+      </section>
+      <section id="section-13" class="level1">
+      <h1></h1>
+      <section id="histological-risk-model" class="level2">
+      <h2>Histological Risk Model</h2>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>Variable</th>
+      <th>Definition</th>
+      <th>Points</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>WPOI 1</td>
+      <td>Pushing Border</td>
+      <td>0</td>
+      </tr>
+      <tr class="even">
+      <td>WPOI 2</td>
+      <td>Finger Growths</td>
+      <td>0</td>
+      </tr>
+      <tr class="odd">
+      <td>WPOI 3</td>
+      <td>Large Islands</td>
+      <td>0</td>
+      </tr>
+      <tr class="even">
+      <td>WPOI 4</td>
+      <td>Small Islands</td>
+      <td>+1</td>
+      </tr>
+      <tr class="odd">
+      <td>WPOI 5</td>
+      <td>Tumor Satellites</td>
+      <td>+3</td>
+      </tr>
+      <tr class="even">
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Histological Risk Model</p>
+      <p style="text-align: left;">
+      <small> Brandwein, M., et al., Am J of Surg Path (2010) </small>
+      </p>
+      </section>
+      <section id="histological-risk-model-1" class="level2">
+      <h2>Histological Risk Model</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/brandwein2010_fig1.svg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/brandwein2010_fig2.svg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      <p style="text-align: left;">
+      <small> Brandwein, M., et al., Am J of Surg Path (2010) </small>
+      </p>
+      </section>
+      <section id="data-understanding-1" class="level2">
+      <h2>Data Understanding</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/044a_original.png" alt="WPOI Pattern 4" style="width:75.0%" /><figcaption>WPOI Pattern 4</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/014b_original.png" alt="WPOI Pattern 5" style="width:75.0%" /><figcaption>WPOI Pattern 5</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      <section id="data-understanding-2" class="level2">
+      <h2>Data Understanding</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/044a_original_boundaries.png" alt="WPOI Pattern 4" style="width:75.0%" /><figcaption>WPOI Pattern 4</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/014b_original_boundaries.png" alt="WPOI Pattern 5" style="width:75.0%" /><figcaption>WPOI Pattern 5</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <!-- Particles scripts -->
+    <script src="lib/js/particles.js"></script>
+    <script src="lib/js/app.js"></script>
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        fragments: true,
+
+                  transition: Reveal.getQueryHash().transition || 'fade',
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+          { src: 'plugin/math/math.js', async: true },
+          { src: 'plugin/chalkboard/chalkboard.js'}
+        ],
+        
+        // Chalkboard Plugin Settings
+				chalkboard: {
+					src: "plugin/chalkboard/chalkboard.json",
+					toggleChalkboardButton: { left: "80px" },
+					toggleNotesButton: { left: "130px" },
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					theme: "whiteboard",
+//					background: [ 'rgba(127,127,127,.1)' , 'reveal.js-plugins/chalkboard/img/whiteboard.png' ],
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					pen: [ url('reveal.js-plugins/chalkboard/img/boardmarker.png), auto' , 'url(reveal.js-plugins/chalkboard/img/boardmarker.png), auto' ],
+//				        color: [ 'rgba(0,0,255,1)', 'rgba(0,0,255,0.5)' ],
+//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
+				},
+				keyboard: {
+				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
+				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
+				    68: function() { RevealChalkboard.download() },	// downlad chalkboard drawing when 'd' is pressed
+					  90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					  84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+				},
+      });
+
+    </script>
+  </body>
+</html>
