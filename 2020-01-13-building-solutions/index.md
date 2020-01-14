@@ -602,7 +602,7 @@ Text and categorical values should be converted to numeric values.
 
 <div class="txt-left">
 <ul>
-<li class="fragment">**Ordinal values** can be placed in some ("Low", 
+<li class="fragment">**Ordinal values** can be placed in some order ("Low", 
 "Intermediate", "High")</li>
 <li class="fragment">**Non-ordinal values** cannot be placed in order (blood
 type A or B)</li>
@@ -648,13 +648,13 @@ of categories. Each of the new features is *binary*, meaning it's only 0 or 1.
 
 ## One-Hot Encoding
 
-|  id | Type A | Type B |
-|-----|--------|--------|
-| 001 |      1 |      0 |
-| 002 |      0 |      1 |
-| 003 |      0 |      1 |
-| 004 |      1 |      0 |
-| 005 |      0 |      1 |
+|  id | Blood Type A | Blood Type B |
+|-----|--------------|--------------|
+| 001 |            1 |            0 |
+| 002 |            0 |            1 |
+| 003 |            0 |            1 |
+| 004 |            1 |            0 |
+| 005 |            0 |            1 |
 
 ## One-Hot Encoding
 
@@ -1006,56 +1006,3 @@ You may only be responsible for some of the workflow steps...
 
 # 
 
-## Histological Risk Model
-
-| Variable | Definition       | Points |
-|----------|------------------|--------|
-| WPOI 1   | Pushing Border   |      0 |
-| WPOI 2   | Finger Growths   |      0 |
-| WPOI 3   | Large Islands    |      0 |
-| WPOI 4   | Small Islands    |     +1 |
-| WPOI 5   | Tumor Satellites |     +3 |
-|          |                  |        |
-
-Histological Risk Model
-
-<p style="text-align: left;"><small>
-Brandwein, M., et al., Am J of Surg Path (2010)
-</small></p>
-
-## Histological Risk Model
-
-<div class="l-double">
-<div>
-![ ](img/brandwein2010_fig1.svg){ width=80% }
-</div>
-<div> 
-![ ](img/brandwein2010_fig2.svg){ width=80% }
-</div>
-</div>
-
-<p style="text-align: left;"><small>
-Brandwein, M., et al., Am J of Surg Path (2010)
-</small></p>
-
-## Data Understanding
-
-<div class="l-double">
-<div>
-![WPOI Pattern 4](img/044a_original.png){ width=75% }
-</div>
-<div> 
-![WPOI Pattern 5](img/014b_original.png){ width=75% }
-</div>
-</div>
-
-## Data Understanding
-
-<div class="l-double">
-<div>
-![WPOI Pattern 4](img/044a_original_boundaries.png){ width=75% }
-</div>
-<div> 
-![WPOI Pattern 5](img/014b_original_boundaries.png){ width=75% }
-</div>
-</div>
