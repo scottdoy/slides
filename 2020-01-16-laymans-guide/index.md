@@ -58,33 +58,21 @@ The job of the ML expert is to:
 </div>
 </div>
 
+<div class="l-double">
+<div>
+**Semi-Supervised Learning**
+
+<p class="fragment">Use **partially labeled** data 
+to handle the process</p>
+</div>
+<div> 
+**Reinforcement Learning**
+
+<p class="fragment">An **agent** learns to complete a task **policy** of rewards</p>
+</div> 
+</div>
+
 # 
-
-## Example: Cancer Diagnosis
-
-## Example: Biomedical Image Analysis
-
-<div class="l-double">
-<div>
-![](img/fna_92_5311_benign.png){ width=80% }
-</div>
-<div> 
-![](img/fna_91_5691_malignant.png){ width=80% }
-</div>
-</div>
-
-## Fine Needle Aspirates
-
-<div class="l-double">
-<div>
-![Benign FNA Image](img/fna_92_5311_benign.png){ width=80% }
-</div>
-<div> 
-![Malignant FNA Image](img/fna_91_5691_malignant.png){ width=80% }
-</div>
-</div>
-
-**Problem Statement:** Predict whether a patient's tumor is benign or malignant, given an FNA image
 
 ## Data Definitions
 
@@ -96,19 +84,17 @@ The starting point for all ML algorithms is **data**.
 
 ![Complex, Multi-Modal Data](img/data_formats.png){ width=70% }
 
-## Quantitative Structure:<br/> Expression of Disease State
+## Computational Pathology:<br/> Expression of Disease State
 
 <p class="fragment">Biological structure is **primary data**. </p>
-
 <p class="fragment">We can quantify **biological structure**.</p>
-
 <p class="fragment">We can **model** relationships between **structure and disease**.</p>
 
 ## Fundamental Hypothesis
 
 Changes in genomic expression manifest as physical changes in tumor morphology
 
-<div class="fragment fade-in-then-out l-double">
+<div class="fragment l-double">
 <div>
 ![ ](img/badve2008_fig4b1.svg){ width=80% }
 </div>
@@ -117,14 +103,23 @@ Changes in genomic expression manifest as physical changes in tumor morphology
 </div>
 </div>
 
-<p style="text-align: left;"><small>
+<p class="fragment" style="text-align: left;"><small>
 S. S. Badve et al., JCO (2008),
 Paik et al., N Engl J Med (2004)
 </small></p>
 
-<div class="fragment" style="position:relative; top:-750px;">
+## Fundamental Hypothesis 
+
+Changes in genomic expression manifest as physical changes in tumor morphology
+
+<div>
 ![](img/paik2004_fig2.svg){ width=80% }
 </div>
+
+<p style="text-align: left;"><small>
+S. S. Badve et al., JCO (2008),
+Paik et al., N Engl J Med (2004)
+</small></p>
 
 ## Data Fusion Improves Predictions
 
@@ -172,21 +167,35 @@ Paik et al., N Engl J Med (2004)
 </div>
 </div>
 
-# 
+#
 
-## Machine Learning
+## Example Problem
 
-Learning from Feature Data
+Fine Needle Aspirate Classification
 
-## Fine Needle Aspirate Analysis
+## Example: Biomedical Image Analysis
 
 <div class="l-double">
 <div>
-![Benign FNA Image](img/fna_91_5691_malignant.png){ width=100% }
+![](img/fna_92_5311_benign.png){ width=80% }
 </div>
+<div> 
+![](img/fna_91_5691_malignant.png){ width=80% }
+</div>
+</div>
+
+## Fine Needle Aspirates
+
+<div class="l-double">
 <div>
-![Malignant FNA](img/fna_92_5311_benign.png){ width=100% }
+![Benign FNA Image](img/fna_92_5311_benign.png){ width=80% }
 </div>
+<div> 
+![Malignant FNA Image](img/fna_91_5691_malignant.png){ width=80% }
+</div>
+</div>
+
+**Problem Statement:** Predict whether a patient's tumor is benign or malignant, given an FNA image
 
 ## Building Informative Features
 
@@ -304,6 +313,10 @@ Building Blocks for Deep Learning
 ## Simple Perceptron Decision Space
 
 ![Simple Perceptron](img/simple_perceptron_decision_space.png){ width=75% }
+
+<p style="text-align: left;"><small>
+Richard O. Duda, Peter E. Hart, David G. Stork, "Pattern Classification, 2nd Edition"
+</small></p>
 
 ## Hidden Layers: Complex Decision Space
 

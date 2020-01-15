@@ -117,40 +117,24 @@
       </p>
       </div>
       </div>
+      <div class="l-double">
+      <div>
+      <p><strong>Semi-Supervised Learning</strong></p>
+      <p class="fragment">
+      Use <strong>partially labeled</strong> data to handle the process
+      </p>
+      </div>
+      <div>
+      <p><strong>Reinforcement Learning</strong></p>
+      <p class="fragment">
+      An <strong>agent</strong> learns to complete a task <strong>policy</strong> of rewards
+      </p>
+      </div>
+      </div>
       </section>
       </section>
       <section id="section-1" class="level1">
       <h1></h1>
-      <section id="example-cancer-diagnosis" class="level2">
-      <h2>Example: Cancer Diagnosis</h2>
-      </section>
-      <section id="example-biomedical-image-analysis" class="level2">
-      <h2>Example: Biomedical Image Analysis</h2>
-      <div class="l-double">
-      <div>
-      <p><img src="img/fna_92_5311_benign.png" style="width:80.0%" /></p>
-      </div>
-      <div>
-      <p><img src="img/fna_91_5691_malignant.png" style="width:80.0%" /></p>
-      </div>
-      </div>
-      </section>
-      <section id="fine-needle-aspirates" class="level2">
-      <h2>Fine Needle Aspirates</h2>
-      <div class="l-double">
-      <div>
-      <figure>
-      <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" /><figcaption>Benign FNA Image</figcaption>
-      </figure>
-      </div>
-      <div>
-      <figure>
-      <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" /><figcaption>Malignant FNA Image</figcaption>
-      </figure>
-      </div>
-      </div>
-      <p><strong>Problem Statement:</strong> Predict whether a patient’s tumor is benign or malignant, given an FNA image</p>
-      </section>
       <section id="data-definitions" class="level2">
       <h2>Data Definitions</h2>
       <p>The starting point for all ML algorithms is <strong>data</strong>.</p>
@@ -164,8 +148,8 @@
       <img src="img/data_formats.png" alt="Complex, Multi-Modal Data" style="width:70.0%" /><figcaption>Complex, Multi-Modal Data</figcaption>
       </figure>
       </section>
-      <section id="quantitative-structure-expression-of-disease-state" class="level2">
-      <h2>Quantitative Structure:<br/> Expression of Disease State</h2>
+      <section id="computational-pathology-expression-of-disease-state" class="level2">
+      <h2>Computational Pathology:<br/> Expression of Disease State</h2>
       <p class="fragment">
       Biological structure is <strong>primary data</strong>.
       </p>
@@ -179,7 +163,7 @@
       <section id="fundamental-hypothesis" class="level2">
       <h2>Fundamental Hypothesis</h2>
       <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
-      <div class="fragment fade-in-then-out l-double">
+      <div class="fragment l-double">
       <div>
       <p><img src="img/badve2008_fig4b1.svg" style="width:80.0%" /></p>
       </div>
@@ -187,12 +171,19 @@
       <p><img src="img/badve2008_fig4b2.svg" style="width:80.0%" /></p>
       </div>
       </div>
+      <p class="fragment" style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="fundamental-hypothesis-1" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div>
+      <p><img src="img/paik2004_fig2.svg" style="width:80.0%" /></p>
+      </div>
       <p style="text-align: left;">
       <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
       </p>
-      <div class="fragment" style="position:relative; top:-750px;">
-      <p><img src="img/paik2004_fig2.svg" style="width:80.0%" /></p>
-      </div>
       </section>
       <section id="data-fusion-improves-predictions" class="level2">
       <h2>Data Fusion Improves Predictions</h2>
@@ -246,30 +237,43 @@
       <p><img src="img/ata06.png" width="456" height="356" /></p>
       </div>
       <div style="grid-row: 2;">
-      <p><img src="img/ata07.png" />{ height=356 width=456 **</p>
+      <p><img src="img/ata07.png" width="456" height="356" /></p>
       </div>
       </div>
       </section>
       </section>
       <section id="section-2" class="level1">
       <h1></h1>
-      <section id="machine-learning-1" class="level2">
-      <h2>Machine Learning</h2>
-      <p>Learning from Feature Data</p>
+      <section id="example-problem" class="level2">
+      <h2>Example Problem</h2>
+      <p>Fine Needle Aspirate Classification</p>
       </section>
-      <section id="fine-needle-aspirate-analysis" class="level2">
-      <h2>Fine Needle Aspirate Analysis</h2>
+      <section id="example-biomedical-image-analysis" class="level2">
+      <h2>Example: Biomedical Image Analysis</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/fna_92_5311_benign.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/fna_91_5691_malignant.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="fine-needle-aspirates" class="level2">
+      <h2>Fine Needle Aspirates</h2>
       <div class="l-double">
       <div>
       <figure>
-      <img src="img/fna_91_5691_malignant.png" alt="Benign FNA Image" style="width:100.0%" /><figcaption>Benign FNA Image</figcaption>
+      <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" /><figcaption>Benign FNA Image</figcaption>
       </figure>
       </div>
       <div>
       <figure>
-      <img src="img/fna_92_5311_benign.png" alt="Malignant FNA" style="width:100.0%" /><figcaption>Malignant FNA</figcaption>
+      <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" /><figcaption>Malignant FNA Image</figcaption>
       </figure>
       </div>
+      </div>
+      <p><strong>Problem Statement:</strong> Predict whether a patient’s tumor is benign or malignant, given an FNA image</p>
       </section>
       <section id="building-informative-features" class="level2">
       <h2>Building Informative Features</h2>
@@ -373,7 +377,7 @@
       <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/scatter_plot.html">
       </iframe>
       </section>
-      <section id="variance-vs.generalization" class="level2">
+      <section id="variance-vs.-generalization" class="level2">
       <h2>Variance vs. Generalization</h2>
       <p>
       Linear boundaries do not model <strong>variance</strong> and miss obvious trends.
@@ -385,7 +389,7 @@
       In general, you want the <strong>simplest</strong> model with the best <strong>performance</strong>.
       </p>
       </section>
-      <section id="tradeoff-variance-vs.generalization" class="level2">
+      <section id="tradeoff-variance-vs.-generalization" class="level2">
       <h2>Tradeoff: Variance vs. Generalization</h2>
       <p>
       Each of these decision boundaries makes errors!
@@ -430,6 +434,9 @@
       <figure>
       <img src="img/simple_perceptron_decision_space.png" alt="Simple Perceptron" style="width:75.0%" /><figcaption>Simple Perceptron</figcaption>
       </figure>
+      <p style="text-align: left;">
+      <small> Richard O. Duda, Peter E. Hart, David G. Stork, “Pattern Classification, 2nd Edition” </small>
+      </p>
       </section>
       <section id="hidden-layers-complex-decision-space" class="level2">
       <h2>Hidden Layers: Complex Decision Space</h2>
@@ -804,7 +811,7 @@
       However, it’s not so easy for <strong>pathology</strong>…
       </p>
       </section>
-      <section id="natural-vs.specialized-image-datasets" class="level2">
+      <section id="natural-vs.-specialized-image-datasets" class="level2">
       <h2>Natural vs. Specialized Image Datasets</h2>
       <div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr">
       <div>
