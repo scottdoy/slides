@@ -651,7 +651,7 @@ The Importance of Data
 
 ## Medical Images are Sparse
 
-!https://cloud.google.com/vision(img/he_imagesearch01.png)
+![https://cloud.google.com/vision](img/he_imagesearch01.png)
 
 ## There Is Some Data However
 
