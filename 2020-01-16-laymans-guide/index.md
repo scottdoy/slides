@@ -686,7 +686,7 @@ The Importance of Data
 ![](img/annotation_stations_01.jpg){ width=100% }
 </div>
 <div>
-![](img/annotation_stations_02.jpg){ width=100% **
+![](img/annotation_stations_02.jpg){ width=100%}
 </div></div>
 
 # 
