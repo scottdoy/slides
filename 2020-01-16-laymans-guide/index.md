@@ -686,8 +686,58 @@ The Importance of Data
 ![](img/annotation_stations_01.jpg){ width=100% }
 </div>
 <div>
-![](img/annotation_stations_02.jpg){ width=100% }
+![](img/annotation_stations_02.jpg){ width=100% **
 </div></div>
+
+# 
+
+## The Role of Pathologists in an Automating World
+
+![](img/automation.png){ width=80%}
+
+## Will AI Replace Pathologists?
+
+![](img/automation02.png){ width=80% }
+
+## Will AI Replace Pathologists?
+
+**2009**: NO!
+
+<p class="fragment">
+Machine Learning will never be as accurate as a human.
+</p>
+
+<p class="fragment">
+**2020**: Still NO!
+</p>
+
+<p class="fragment">
+Machines cannot adapt to or integrate real-world information and progress.
+</p>
+
+<p class="fragment">
+They cannot act as moral agents, take responsibility, or bear consequences.
+</p>
+
+## Value of Human Adaptation
+
+<div class="l-double">
+<div>
+The value of physicians is **not** in mechanical tasks.
+
+<p class="fragment">
+It is in the ability to **improve**, **invent,** **integrate**, and move beyond
+what was learned in training.
+</p>
+
+<p class="fragment">
+Jobs won’t go away, **but they will probably change**.
+</p>
+</div>
+<div>
+![](img/mosthumanhuman.png){width=50%}
+</div>
+</div>
 
 # 
 
