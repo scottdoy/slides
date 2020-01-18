@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Building an AI School for Pathology</title>
+
+    <meta name="description" content="Building an AI School for Pathology">    
+
+        <meta name="author" content="Scott Doyle" />
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <!-- Set Theme -->
+        <link rel="stylesheet" href="css/theme/scottdoy.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/atelier-dune-light.css">
+    
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+          </head>
+
+  <body>
+
+  
+  <div class="reveal">
+    <div class="slides">
+      <!-- Custom Title Section Here -->
+      <section data-background="#005bbb" id="particles-js" class="level1">
+        <section id="title" class="level2">
+        <h1 style="color: #e4e4e4;">Building an AI School for Pathology</h1>
+        <p>
+        <h2 style="color: #e4e4e4;">Teaching Humans and AI Together</h2>
+        </p>
+        <p style="color: #e4e4e4;"><small>Scott Doyle / scottdoy@buffalo.edu</small></p>
+        </section>
+      </section>
+
+      <!-- Custom TOC Section here-->
+      
+      <!-- Insert Body -->
+      <section id="section" class="level1">
+      <h1></h1>
+      <section id="computational-cell-biology-anatomy-and-pathology" class="level2">
+      <h2>Computational Cell Biology, Anatomy, and Pathology</h2>
+      <p>Modernizing Medical Curricula</p>
+      </section>
+      <section id="downtown-buffalo-campus" class="level2">
+      <h2>Downtown Buffalo Campus</h2>
+      <p><img src="img/downtown.png" style="width:100.0%" /></p>
+      </section>
+      <section id="phd-in-pathology-and-anatomical-sciences" class="level2">
+      <h2>PhD in Pathology and Anatomical Sciences</h2>
+      <blockquote>
+      <p><span class="fragment">Our PhD program in Computational Cell Biology, Anatomy and Pathology aims to produce scientists with <span style="background-color:
+      yellow;">knowledge of biological principles at all levels of scale</span></span> <span class="fragment">and who are enabled by proficiency in <span style="background-color: yellow;">computational imaging methodologies </span></span><span class="fragment">and <span style="background-color: yellow;">data analyses.</span></span></p>
+      </blockquote>
+      </section>
+      <section id="atoms-to-anatomy-paradigm" class="level2">
+      <h2>Atoms to Anatomy Paradigm</h2>
+      <div class="l-multiple" style="grid-template-columns: 1.5fr 1fr 1fr 1fr; row-gap:0;">
+      <div style="grid-row: 1 / span 2;">
+      <p><img src="img/ata01.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata02.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata03.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/ata04.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata05.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata06.png" width="456" height="356" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <p><img src="img/ata07.png" width="456" height="356" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="quantitative-structure-expression-of-disease-state" class="level2">
+      <h2>Quantitative Structure:<br/> Expression of Disease State</h2>
+      <p class="fragment">
+      Biological structure is <strong>primary data</strong>.
+      </p>
+      <p class="fragment">
+      We can <strong>quantify</strong> biological structure.
+      </p>
+      <p class="fragment">
+      We can <strong>model</strong> relationships between <strong>structure and disease</strong>.
+      </p>
+      </section>
+      <section id="fundamental-hypothesis" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div class="fragment l-double">
+      <div>
+      <p><img src="img/badve2008_fig4b1.svg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/badve2008_fig4b2.svg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      <p class="fragment" style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="fundamental-hypothesis-1" class="level2">
+      <h2>Fundamental Hypothesis</h2>
+      <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+      <div>
+      <p><img src="img/paik2004_fig2.svg" style="width:80.0%" /></p>
+      </div>
+      <p style="text-align: left;">
+      <small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004) </small>
+      </p>
+      </section>
+      <section id="data-fusion-improves-predictions" class="level2">
+      <h2>Data Fusion Improves Predictions</h2>
+      <div class="l-multiple" style="grid-template-columns: auto auto auto;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_quanthisto.png" alt="Quantitative Histology" style="height:30.0%" /><figcaption>Quantitative Histology</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/lee2015_lowdim1.png" alt=" " style="height:30.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1 / span 2;vertical-align: middle;">
+      <figure>
+      <img src="img/lee2015_combined.png" alt="Combined Embeddings" style="height:30.0%" /><figcaption>Combined Embeddings</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_massspect.png" alt="Mass Spectrometry" style="height:30.0%" /><figcaption>Mass Spectrometry</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/lee2015_lowdim2.png" alt="Low-Dimensional Embeddings" style="height:30.0%" /><figcaption>Low-Dimensional Embeddings</figcaption>
+      </figure>
+      </div>
+      </div>
+      <p style="text-align: right;">
+      <small> Lee, G., et al. IEEE TMI (2019) </small>
+      </p>
+      </section>
+      <section id="training-students-in-ai" class="level2">
+      <h2>Training Students in AI</h2>
+      <p>Engineer-Physician Training</p>
+      </section>
+      <section id="ai-is-just-another-test" class="level2">
+      <h2>AI Is Just Another Test</h2>
+      <div class="txt-left">
+      <p class="fragment">
+      <strong>Understanding the Methodology</strong>
+      </p>
+      <ul>
+      <li class="fragment">
+      “How does this test work? What does it require to run?”
+      </li>
+      </ul>
+      <p class="fragment">
+      <strong>Interpreting the Results</strong>
+      </p>
+      <ul>
+      <li class="fragment">
+      “What are the outputs I can expect?”
+      </li>
+      </ul>
+      <p class="fragment">
+      <strong>Software Solutions for AI-Human Interaction</strong>
+      </p>
+      <ul>
+      <li class="fragment">
+      “How do I do it?”
+      </li>
+      </ul>
+      </div>
+      </section>
+      </section>
+      <section id="section-1" class="level1">
+      <h1></h1>
+      <section id="understanding-the-methodology" class="level2">
+      <h2>Understanding the Methodology</h2>
+      <p>How Does It Work, and What Does It Require</p>
+      </section>
+      <section id="how-does-machine-learning-work" class="level2">
+      <h2>How Does Machine Learning Work?</h2>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Supervised vs. Unsupervised Methods
+      </li>
+      <li class="fragment">
+      Feature Engineering
+      </li>
+      <li class="fragment">
+      Data Visualization
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="example-problem-fine-needle-aspirates" class="level2">
+      <h2>Example Problem: Fine Needle Aspirates</h2>
+      <div class="l-double">
+      <div>
+      <figure>
+      <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" /><figcaption>Benign FNA Image</figcaption>
+      </figure>
+      </div>
+      <div>
+      <figure>
+      <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" /><figcaption>Malignant FNA Image</figcaption>
+      </figure>
+      </div>
+      </div>
+      <p class="fragment">
+      <strong>Problem Statement:</strong> <br />Predict whether a patient’s tumor is benign or malignant, given an FNA image
+      </p>
+      </section>
+      <section id="building-informative-features" class="level2">
+      <h2>Building Informative Features</h2>
+      <p class="fragment">
+      <strong>Domain knowledge</strong> identifies useful features.
+      </p>
+      <p class="fragment">
+      Pathologists <strong>already</strong> distinguish benign from malignant tumors.
+      </p>
+      <p class="fragment">
+      Our job is to convert <strong>qualitative</strong> features to <strong>quantitative</strong> ones.
+      </p>
+      </section>
+      <section id="building-informative-features-1" class="level2">
+      <h2>Building Informative Features</h2>
+      <p>The pathologist lists <strong>cell nuclei</strong> features of importance:</p>
+      <div class="l-double">
+      <div>
+      <ol type="1">
+      <li>Radius</li>
+      <li>Texture</li>
+      <li>Perimeter</li>
+      <li>Area</li>
+      <li>Smoothness</li>
+      </ol>
+      </div>
+      <div>
+      <ol start="6" type="1">
+      <li>Compactness</li>
+      <li>Concavity</li>
+      <li>Concave Points</li>
+      <li>Symmetry</li>
+      <li>Fractal Dimension</li>
+      </ol>
+      </div>
+      </div>
+      <p class="fragment">
+      <strong>Feature extraction</strong> results in 30 feature values per image.
+      </p>
+      </section>
+      <section id="texture-of-the-nuclei" class="level2">
+      <h2>Texture of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/texture_mean.html">
+      </iframe>
+      </section>
+      <section id="average-radius-of-the-nuclei" class="level2">
+      <h2>Average Radius of the Nuclei</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/radius_mean.html">
+      </iframe>
+      </section>
+      <section id="multivariate-distribution" class="level2">
+      <h2>Multivariate Distribution</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/scatter_histogram_plot.html">
+      </iframe>
+      </section>
+      <section id="what-data-is-required-for-machine-learning" class="level2">
+      <h2>What Data is Required for Machine Learning?</h2>
+      <div class="txt-left">
+      <ul>
+      <li class="fragment">
+      Data Collection / Feature Extraction
+      </li>
+      <li class="fragment">
+      Data Wrangling and Cleaning
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="characteristics-of-good-features" class="level2">
+      <h2>Characteristics of Good Features</h2>
+      <div class="txt-left">
+      <p class="fragment">
+      <strong>Descriptive:</strong> Similar within a class, and different between classes
+      </p>
+      <p class="fragment">
+      <strong>Relevant:</strong> Features should make sense
+      </p>
+      <p class="fragment">
+      <strong>Invariant:</strong> Not dependent on how you measure them
+      </p>
+      </div>
+      </section>
+      <section id="another-example-oral-cavity-cancer" class="level2">
+      <h2>Another Example: Oral Cavity Cancer</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/044a.jpg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b.jpg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="occ-characteristics" class="level2">
+      <h2>OCC Characteristics</h2>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>WPOI</th>
+      <th>Definition</th>
+      <th>Points</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Type 1</td>
+      <td>Pushing border</td>
+      <td>0</td>
+      </tr>
+      <tr class="even">
+      <td>Type 2</td>
+      <td>Finger-like Growth</td>
+      <td>0</td>
+      </tr>
+      <tr class="odd">
+      <td>Type 3</td>
+      <td>Large Islands, &gt;15 cells</td>
+      <td>0</td>
+      </tr>
+      <tr class="even">
+      <td>Type 4</td>
+      <td>Small islands, &lt;=15 cells</td>
+      <td>+1</td>
+      </tr>
+      <tr class="odd">
+      <td>Type 5</td>
+      <td>Satellites, &gt;=1mm from Tumor</td>
+      <td>+3</td>
+      </tr>
+      <tr class="even">
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      </tbody>
+      </table>
+      <p style="text-align: left;">
+      <small> Brandwein, et al., Am. J of Surg. Path. (2010), Li, et al. Head and Neck Path. (2013), Sinha, et al. Mod. Path. (2018) </small>
+      </p>
+      </section>
+      <section id="extracting-architecture" class="level2">
+      <h2>Extracting Architecture</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/044a_original_boundaries.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_boundary.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="extracting-architecture-1" class="level2">
+      <h2>Extracting Architecture</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/044a_delaunay_constrained.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_delaunay_constrained.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="extracting-architecture-2" class="level2">
+      <h2>Extracting Architecture</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/044a_wave_graphs.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_wave_graphs.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="quantitative-features-as-classifiers" class="level2">
+      <h2>Quantitative Features as Classifiers</h2>
+      <div class="l-multiple" style="grid-template-columns: 1.5fr 0.5fr 1.5fr;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/044a_delaunay_constrained.png" alt=" " style="width:50.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <p><small> <br /><span class="math display">$$ \begin{bmatrix}
+      39.7 \\
+      1189.5 \\
+      1149.8 \\
+      192.7 \\
+      211.6 \\
+      \vdots \\
+      \end{bmatrix} $$</span><br /></small></p>
+      </div>
+      <div style="grid-row: 1 / span 2; vertical-align: bottom;">
+      <p><img src="img/occult_metastasis_tsne.png" style="width:80.0%" /></p>
+      </div>
+      <div style="grid-row: 2;">
+      <figure>
+      <img src="img/014b_delaunay_constrained.png" alt=" " style="width:50.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 2;">
+      <p><small> <br /><span class="math display">$$ \begin{bmatrix}
+      35.8 \\
+      1314.1 \\
+      1278.2 \\
+      313.8 \\
+      339.8 \\
+      \vdots \\
+      \end{bmatrix} $$</span><br /></small></p>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-2" class="level1">
+      <h1></h1>
+      <section id="interpreting-the-results" class="level2">
+      <h2>Interpreting the Results</h2>
+      <p>What do the Outputs Mean</p>
+      </section>
+      <section id="calculating-probabilities-from-features" class="level2">
+      <h2>Calculating Probabilities from Features</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="no" src="plots/pdf_cdf.html">
+      </iframe>
+      </section>
+      <section id="understanding-segmentation-probabilities" class="level2">
+      <h2>Understanding Segmentation Probabilities</h2>
+      <figure>
+      <img src="img/Unet.svg" alt="Unet Architecture" style="width:100.0%" /><figcaption>Unet Architecture</figcaption>
+      </figure>
+      </section>
+      <section id="segmentation-output" class="level2">
+      <h2>Segmentation Output</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/014b.jpg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_color_label.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="probabilistic-segmentation" class="level2">
+      <h2>Probabilistic Segmentation</h2>
+      <div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div>
+      <p><img src="img/014b_class1.png" style="width:100.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_class2.png" style="width:100.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/014b_class3.png" style="width:100.0%" /></p>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-3" class="level1">
+      <h1></h1>
+      <section id="computational-assignments" class="level2">
+      <h2>Computational Assignments</h2>
+      <p>Coding Homework for Non-Engineers</p>
+      </section>
+      <section id="nuclei-annotations-for-cell-types-in-fiji" class="level2">
+      <h2>Nuclei Annotations for Cell Types in Fiji</h2>
+      <p><img src="img/Fiji.png" style="width:70.0%" /></p>
+      </section>
+      <section id="displaying-annotated-patches" class="level2">
+      <h2>Displaying Annotated Patches</h2>
+      <p><img src="img/matlab_patches.png" style="width:45.0%" /></p>
+      </section>
+      <section id="representing-data-in-colorspace" class="level2">
+      <h2>Representing Data in Colorspace</h2>
+      <p><img src="img/matlab_rgb_space.png" style="width:70.0%" /></p>
+      </section>
+      <section id="running-classification-in-matlab" class="level2">
+      <h2>Running Classification in MATLAB</h2>
+      <p><img src="img/matlab_classification_learner.png" style="width:70.0%" /></p>
+      </section>
+      <section id="data-clustering" class="level2">
+      <h2>Data Clustering</h2>
+      <div class="txt-left">
+      <ul>
+      <li>
+      Do the data clusters separate out, or are they mixed?
+      </li>
+      <li class="fragment">
+      Will RGB values be able to distinguish between them?
+      </li>
+      <li class="fragment">
+      Can other image traits distinguish these groups more easily?
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="classification" class="level2">
+      <h2>Classification</h2>
+      <div class="txt-left">
+      <ul>
+      <li>
+      What are the classification error rates?
+      </li>
+      <li class="fragment">
+      Try to reduce error by adjusting classifier parameters.
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="classification-learner" class="level2">
+      <h2>Classification Learner</h2>
+      <div class="txt-left">
+      <ul>
+      <li>
+      Which classifier performed the best?
+      </li>
+      <li class="fragment">
+      Did any classifier achieve 100% performance? If so, which one?
+      </li>
+      <li class="fragment">
+      Create a Confusion Matrix. Which classes are misclassified the most?
+      </li>
+      </ul>
+      </div>
+      </section>
+      </section>
+      <section id="section-4" class="level1">
+      <h1></h1>
+      <section id="software-solutions-for-ml-ai" class="level2">
+      <h2>Software Solutions for ML / AI</h2>
+      <p>Walking the Walk</p>
+      </section>
+      <section id="software-stack" class="level2">
+      <h2>Software Stack</h2>
+      <p><img src="img/software_stack.png" style="width:70.0%" /></p>
+      </section>
+      <section id="digital-image-storage-omero" class="level2">
+      <h2>Digital Image Storage: Omero</h2>
+      <p><img src="img/omero.png" style="width:70.0%" /></p>
+      </section>
+      <section id="human-in-the-loop-annotation-stations" class="level2">
+      <h2>Human-in-the-Loop: Annotation Stations</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/annotation_stations_01.jpg" style="height:90.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/annotation_stations_02.jpg" style="height:90.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="online-annotations" class="level2">
+      <h2>Online Annotations</h2>
+      <p><img src="img/histomicstk.png" style="width:60.0%" /></p>
+      </section>
+      <section id="online-quality-assurance-and-feedback" class="level2">
+      <h2>Online Quality Assurance and Feedback</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/django01.png" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/django02.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="online-quality-assurance-and-feedback-1" class="level2">
+      <h2>Online Quality Assurance and Feedback</h2>
+      <p><img src="img/django03.png" style="width:50.0%" /></p>
+      </section>
+      </section>
+      <section id="section-5" class="level1">
+      <h1></h1>
+      <section id="concluding-remarks" class="level2">
+      <h2>Concluding Remarks</h2>
+      </section>
+      <section id="goals-of-the-program" class="level2">
+      <h2>Goals of the Program</h2>
+      <div class="txt-left">
+      <ul>
+      <li>
+      Pathologists will be users of these tools.
+      </li>
+      <li class="fragment">
+      They should understand:
+      </li>
+      <ul>
+      <li class="fragment">
+      How they work
+      </li>
+      <li class="fragment">
+      How to interpret them
+      </li>
+      <li class="fragment">
+      When they are an appropriate test to order for a patient
+      </li>
+      </ul>
+      <li class="fragment">
+      <strong>We are open to suggestions and advice on building this program!</strong>
+      </li>
+      </ul>
+      </div>
+      </section>
+      </section>
+      <section id="section-6" class="level1">
+      <h1></h1>
+      <section id="thank-you" class="level2">
+      <h2>Thank You!</h2>
+      </section>
+      </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <!-- Particles scripts -->
+    <script src="lib/js/particles.js"></script>
+    <script src="lib/js/app.js"></script>
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        fragments: true,
+
+                  transition: Reveal.getQueryHash().transition || 'fade',
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+          { src: 'plugin/math/math.js', async: true },
+          { src: 'plugin/chalkboard/chalkboard.js'}
+        ],
+        
+        // Chalkboard Plugin Settings
+				chalkboard: {
+					src: "plugin/chalkboard/chalkboard.json",
+					toggleChalkboardButton: { left: "80px" },
+					toggleNotesButton: { left: "130px" },
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					theme: "whiteboard",
+//					background: [ 'rgba(127,127,127,.1)' , 'reveal.js-plugins/chalkboard/img/whiteboard.png' ],
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					pen: [ url('reveal.js-plugins/chalkboard/img/boardmarker.png), auto' , 'url(reveal.js-plugins/chalkboard/img/boardmarker.png), auto' ],
+//				        color: [ 'rgba(0,0,255,1)', 'rgba(0,0,255,0.5)' ],
+//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
+				},
+				keyboard: {
+				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
+				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
+				    68: function() { RevealChalkboard.download() },	// downlad chalkboard drawing when 'd' is pressed
+					  90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					  84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+				},
+      });
+
+    </script>
+  </body>
+</html>
