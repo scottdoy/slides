@@ -5,7 +5,7 @@ transition: fade
 slide-level: 2
 
 author: Scott Doyle
-contact: scottdoy@bufalo.edu
+contact: scottdoy@buffalo.edu
 title: AI Fundamentals
 subtitle: A Starter Guide
 date: 2020-01-20
