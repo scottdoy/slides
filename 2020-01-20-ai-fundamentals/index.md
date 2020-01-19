@@ -7,7 +7,7 @@ slide-level: 2
 author: Scott Doyle
 contact: scottdoy@bufalo.edu
 title: AI Fundamentals
-subtitle: A Layman's Guide
+subtitle: A Starter Guide
 date: 2020-01-20
 ---
 
@@ -84,90 +84,8 @@ The starting point for all ML algorithms is **data**.
 
 ![Complex, Multi-Modal Data](img/data_formats.png){ width=70% }
 
-## Computational Pathology:<br/> Expression of Disease State
 
-<p class="fragment">Biological structure is **primary data**. </p>
-<p class="fragment">We can quantify **biological structure**.</p>
-<p class="fragment">We can **model** relationships between **structure and disease**.</p>
-
-## Fundamental Hypothesis
-
-Changes in genomic expression manifest as physical changes in tumor morphology
-
-<div class="fragment l-double">
-<div>
-![ ](img/badve2008_fig4b1.svg){ width=80% }
-</div>
-<div> 
-![ ](img/badve2008_fig4b2.svg){ width=80% }
-</div>
-</div>
-
-<p class="fragment" style="text-align: left;"><small>
-S. S. Badve et al., JCO (2008),
-Paik et al., N Engl J Med (2004)
-</small></p>
-
-## Fundamental Hypothesis 
-
-Changes in genomic expression manifest as physical changes in tumor morphology
-
-<div>
-![](img/paik2004_fig2.svg){ width=80% }
-</div>
-
-<p style="text-align: left;"><small>
-S. S. Badve et al., JCO (2008),
-Paik et al., N Engl J Med (2004)
-</small></p>
-
-## Data Fusion Improves Predictions
-
-<div class="l-multiple" style="grid-template-columns: auto auto auto;">
-<div style="grid-row: 1;">
-![Quantitative Histology](img/lee2015_quanthisto.png){ height=30% }
-</div>
-<div style="grid-row: 1;">
-![&nbsp;](img/lee2015_lowdim1.png){ height=30% }
-</div>
-<div style="grid-row: 1 / span 2;vertical-align: middle;">
-![Combined Embeddings](img/lee2015_combined.png){ height=30% }
-</div>
-<div style="grid-row: 2;">
-![Mass Spectrometry](img/lee2015_massspect.png){ height=30% }
-</div>
-<div style="grid-row: 2;">
-![Low-Dimensional Embeddings](img/lee2015_lowdim2.png){ height=30% }
-</div>
-</div>
-
-## Atoms to Anatomy Paradigm
-
-<div class="l-multiple" style="grid-template-columns: 1.5fr 1fr 1fr 1fr; row-gap:0;">
-<div style="grid-row: 1 / span 2;">
-![](img/ata01.png){ width=100% }
-</div>
-<div style="grid-row: 1;">
-![](img/ata02.png){ height=356 width=456 }
-</div>
-<div style="grid-row: 1;">
-![](img/ata03.png){ height=356 width=456 }
-</div>
-<div style="grid-row: 1;">
-![](img/ata04.png){ height=356 width=456 }
-</div>
-<div style="grid-row: 2;">
-![](img/ata05.png){ height=356 width=456 }
-</div>
-<div style="grid-row: 2;">
-![](img/ata06.png){ height=356 width=456 }
-</div>
-<div style="grid-row: 2;">
-![](img/ata07.png){ height=356 width=456 }
-</div>
-</div>
-
-#
+# 
 
 ## Example Problem
 
