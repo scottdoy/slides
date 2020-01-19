@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Building an AI School for Pathology</title>
+
+    <meta name="description" content="Building an AI School for Pathology">    
+
+        <meta name="author" content="Scott Doyle" />
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <!-- Set Theme -->
+        <link rel="stylesheet" href="css/theme/scottdoy.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/atelier-dune-light.css">
+    
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+          </head>
+
+  <body>
+
+  
+  <div class="reveal">
+    <div class="slides">
+      <!-- Custom Title Section Here -->
+      <section data-background="#005bbb" id="particles-js" class="level1">
+        <section id="title" class="level2">
+        <h1 style="color: #e4e4e4;">Building an AI School for Pathology</h1>
+        <p>
+        <h2 style="color: #e4e4e4;">Part 2: The Backpropocalypse</h2>
+        </p>
+        <p style="color: #e4e4e4;"><small>Scott Doyle / scottdoy@buffalo.edu</small></p>
+        </section>
+      </section>
+
+      <!-- Custom TOC Section here-->
+      
+      <!-- Insert Body -->
+      <section id="section" class="level1">
+      <h1></h1>
+      <section id="training-ai-students" class="level2">
+      <h2>Training AI Students</h2>
+      <p>Petabyte Pedagogy</p>
+      </section>
+      <section id="why-is-it-called-a-black-box" class="level2">
+      <h2>Why Is It Called a “Black Box”?</h2>
+      <iframe frameborder="0" seamless="seamless" scrolling="yes" src="https://playground.tensorflow.org/">
+      </iframe>
+      </section>
+      <section id="teaching-a-school-of-ai-students" class="level2">
+      <h2>Teaching a School of AI Students</h2>
+      <p><strong>Solution:</strong> Interrogate the system to see what it’s “thinking”!</p>
+      <ul>
+      <li class="fragment">
+      <strong>Classification Output</strong> (What is this?)
+      </li>
+      <li class="fragment">
+      <strong>Intermediate Representation</strong> (How did you get your answer?)
+      </li>
+      <li class="fragment">
+      <strong>Active Learning</strong> (What are you confused about?)
+      </li>
+      <li class="fragment">
+      <strong>Error Analysis</strong> (What did you get wrong?)
+      </li>
+      <li class="fragment">
+      <strong>Generative Models</strong> (Draw a picture of what you think this is.)
+      </li>
+      </ul>
+      </section>
+      </section>
+      <section id="section-1" class="level1">
+      <h1></h1>
+      <section id="classification-output" class="level2">
+      <h2>Classification Output</h2>
+      <p><em>What Is This?</em></p>
+      </section>
+      <section id="deep-learning-for-pathology-segmentation" class="level2">
+      <h2>Deep Learning for Pathology Segmentation</h2>
+      <div class="l-double">
+      <div>
+      Can we replace manual annotations with deep learning?
+      <p class="fragment">
+      <strong>Patient Data:</strong> Small, use traditional ML
+      </p>
+      <p class="fragment">
+      <strong>Pixel Data:</strong> Dense, use deep learning
+      </p>
+      </div>
+      <div>
+      <p><img src="img/044a_original_boundaries.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="deep-learning-for-pathology-segmentation-1" class="level2">
+      <h2>Deep Learning for Pathology Segmentation</h2>
+      <figure>
+      <img src="img/Unet.svg" alt="Unet Architecture" style="width:100.0%" /><figcaption>Unet Architecture</figcaption>
+      </figure>
+      </section>
+      <section id="deep-learning-segmentation" class="level2">
+      <h2>Deep Learning Segmentation</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/he_tissue_sample.jpg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/ground_truth.png" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="deep-learning-segmentation-1" class="level2">
+      <h2>Deep Learning Segmentation</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/he_tissue_sample.jpg" style="width:80.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/segmentation.jpg" style="width:80.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="deep-learning-segmentation-2" class="level2">
+      <h2>Deep Learning Segmentation</h2>
+      <video controls>
+      <source src="img/montage.mp4" type="video/mp4">
+      <p>Your browser does not support the video tag. </video></p>
+      </section>
+      </section>
+      <section id="section-2" class="level1">
+      <h1></h1>
+      <section id="intermediate-representations" class="level2">
+      <h2>Intermediate Representations</h2>
+      <p><strong>How did you get your answer?</strong></p>
+      </section>
+      <section id="semantic-segmentation-filters" class="level2">
+      <h2>Semantic Segmentation Filters</h2>
+      <p><img src="img/Unet.svg" style="width:45.0%" /></p>
+      <div class="l-multiple" style="grid-template-columns: 1fr 1f; row-gap:0; col-gap:0;">
+      <div style="grid-row: 1;">
+      <p><img src="img/he_filter01.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/he_filter02.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/he_filter03.png" style="width:100.0%" /></p>
+      </div>
+      <div style="grid-row: 1;">
+      <p><img src="img/he_filter04.png" style="width:100.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="improving-training-efficiency-active-learning" class="level2">
+      <h2>Improving Training Efficiency: Active Learning</h2>
+      <div class="txt-left">
+      <p><strong>Random Learning (RL):</strong> Annotate everything!</p>
+      <p class="fragment">
+      <strong>Active Learning (AL):</strong> Only annotate the good stuff!
+      </p>
+      <ul>
+      <li class="fragment">
+      Achieve higher performance using the same number of samples
+      </li>
+      <li class="fragment">
+      Use fewer annotated samples to hit a target performance
+      </li>
+      </ul>
+      </div>
+      </section>
+      <section id="active-learning-pipeline" class="level2">
+      <h2>Active Learning Pipeline</h2>
+      <p><img src="img/active_learning.png" style="width:80.0%" /></p>
+      </section>
+      <section id="active-learning-pipeline-1" class="level2">
+      <h2>Active Learning Pipeline</h2>
+      <p><img src="img/active_learning_interface.png" style="width:80.0%" /></p>
+      </section>
+      <section id="progression-of-random-training" class="level2">
+      <h2>Progression of Random Training</h2>
+      <div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr 1fr;
+      row-gap:0;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_original.png" alt="Original" style="width:100.0%" /><figcaption>Original</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_bootstrap.png" alt="Bootstrap" style="width:100.0%" /><figcaption>Bootstrap</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_rl01.png" alt=" " style="width:100.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_rl02.png" alt="Random Learning" style="width:100.0%" /><figcaption>Random Learning</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      <section id="progression-of-active-training" class="level2">
+      <h2>Progression of Active Training</h2>
+      <div class="l-multiple" style="grid-template-columns: 1fr 1fr 1fr 1fr;
+      row-gap:0;">
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_original.png" alt="Original" style="width:100.0%" /><figcaption>Original</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_bootstrap.png" alt="Bootstrap" style="width:100.0%" /><figcaption>Bootstrap</figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_al01.png" alt=" " style="width:100.0%" /><figcaption> </figcaption>
+      </figure>
+      </div>
+      <div style="grid-row: 1;">
+      <figure>
+      <img src="img/al_al02.png" alt="Active Learning" style="width:100.0%" /><figcaption>Active Learning</figcaption>
+      </figure>
+      </div>
+      </div>
+      </section>
+      </section>
+      <section id="section-3" class="level1">
+      <h1></h1>
+      <section id="double-checking-ai" class="level2">
+      <h2>Double-Checking AI</h2>
+      <p>Fragile Neural Networks</p>
+      </section>
+      <section id="fragile-neural-networks" class="level2">
+      <h2>Fragile Neural Networks</h2>
+      <p>Image <strong>normalization</strong> is critical for neural networks.</p>
+      <p class="fragment">
+      <strong>Small changes</strong> in image quality can drastically affect deep learning performance.
+      </p>
+      <p class="fragment">
+      Serial sections help us explore fragility with a minimum of biological or technical variability.
+      </p>
+      <p class="fragment">
+      <strong>Excellent test set for quality assurance!</strong>
+      </p>
+      </section>
+      <section id="fragile-neural-networks-1" class="level2">
+      <h2>Fragile Neural Networks</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/fragile_orig_01.png" style="width:70.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/fragile_orig_02.png" style="width:70.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="fragile-neural-networks-2" class="level2">
+      <h2>Fragile Neural Networks</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/fragile_seg_01.png" style="width:70.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/fragile_seg_02.png" style="width:70.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="fragile-neural-networks-3" class="level2">
+      <h2>Fragile Neural Networks</h2>
+      <p><img src="img/fragile_combined.png" style="width:35.0%" /></p>
+      </section>
+      <section id="importance-of-qa-and-human-in-the-loop" class="level2">
+      <h2>Importance of QA and Human-in-the-Loop</h2>
+      <div class="l-double">
+      <div>
+      Obviously, normalization and background lighting correction can solve this specific problem…
+      <p class="fragment">
+      But what about the “generalization” of neural networks?
+      </p>
+      <p class="fragment">
+      <strong>What other variation exists that we aren’t aware of a priori? </strong>
+      </p>
+      </div>
+      <div>
+      <p><img src="img/fragile_combined.png" style="width:70.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="generative-models-draw-me-a-picture" class="level2">
+      <h2>Generative Models: Draw Me A Picture</h2>
+      <div class="l-double">
+      <div>
+      <p class="fragment">
+      <strong>Variational Autoencoders</strong> and <strong>Generative Adversarial Networks</strong> can recreate images from a learned “latent space” of possible images in the domain.
+      </p>
+      <p class="fragment">
+      Can we train a system to recognize medical image structures?
+      </p>
+      </div>
+      <div>
+      <p><img src="img/gan_faces.png" style="width:70.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="nuclei-gan-which-is-real-which-is-fake" class="level2">
+      <h2>Nuclei GAN: Which is Real, Which is Fake?</h2>
+      <div class="l-double">
+      <div>
+      <p><img src="img/gan_fake.png" style="width:100.0%" /></p>
+      </div>
+      <div>
+      <p><img src="img/gan_real.png" style="width:100.0%" /></p>
+      </div>
+      </div>
+      </section>
+      <section id="nuclei-gan-learning-to-see" class="level2">
+      <h2>Nuclei GAN: Learning to See</h2>
+      <video style="width: 40%;" controls>
+      <source src="img/nuclei_montage.mp4" type="video/mp4">
+      <p>Your browser does not support the video tag. </video></p>
+      </section>
+      </section>
+      <section id="section-4" class="level1">
+      <h1></h1>
+      <section id="concluding-remarks" class="level2">
+      <h2>Concluding Remarks</h2>
+      </section>
+      <section id="ai-is-the-student-not-the-master" class="level2">
+      <h2>AI is the Student, Not the Master</h2>
+      You can interrogate AI to understand it better.
+      <p class="fragment">
+      In training AI, you can develop a deeper understanding of your data by thorough review and classification.
+      </p>
+      <p class="fragment">
+      By reviewing and re-training, you understand the AI “thought process” in a lot of detail, <strong>even if you don’t know the details of how the system is programmed.</strong>
+      </p>
+      <p class="fragment">
+      A lot like students!
+      </p>
+      </section>
+      <section id="this-is-just-the-beginning" class="level2">
+      <h2>This is Just the Beginning</h2>
+      <p><strong>Interpretable AI</strong> is a huge field, the surface of which I have not scratched.</p>
+      <p class="fragment">
+      As we develop more efficient teaching methods, it helps us understand our students – human or AI – a little better.
+      </p>
+      <p class="fragment">
+      It also leads us to more thorough understanding of the subject matter as well.
+      </p>
+      </section>
+      </section>
+      <section id="section-5" class="level1">
+      <h1></h1>
+      <section id="thank-you" class="level2">
+      <h2>Thank You!</h2>
+      </section>
+      </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <!-- Particles scripts -->
+    <script src="lib/js/particles.js"></script>
+    <script src="lib/js/app.js"></script>
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        fragments: true,
+
+                  transition: Reveal.getQueryHash().transition || 'fade',
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+          { src: 'plugin/math/math.js', async: true },
+          { src: 'plugin/chalkboard/chalkboard.js'}
+        ],
+        
+        // Chalkboard Plugin Settings
+				chalkboard: {
+					src: "plugin/chalkboard/chalkboard.json",
+					toggleChalkboardButton: { left: "80px" },
+					toggleNotesButton: { left: "130px" },
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					theme: "whiteboard",
+//					background: [ 'rgba(127,127,127,.1)' , 'reveal.js-plugins/chalkboard/img/whiteboard.png' ],
+// 					pen:  [ 'crosshair', 'pointer' ]
+//					pen: [ url('reveal.js-plugins/chalkboard/img/boardmarker.png), auto' , 'url(reveal.js-plugins/chalkboard/img/boardmarker.png), auto' ],
+//				        color: [ 'rgba(0,0,255,1)', 'rgba(0,0,255,0.5)' ],
+//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
+				},
+				keyboard: {
+				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
+				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
+				    68: function() { RevealChalkboard.download() },	// downlad chalkboard drawing when 'd' is pressed
+					  90: function() { Recorder.downloadZip(); }, 	// press 'z' to download zip containing audio files
+					  84: function() { Recorder.fetchTTS(); } 	// press 't' to fetch TTS audio files
+				},
+      });
+
+    </script>
+  </body>
+</html>
