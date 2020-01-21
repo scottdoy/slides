@@ -17,6 +17,13 @@ date: 2020-01-21
 
 Modernizing Medical Curricula
 
+## Jacobs School of Medicine and Biomedical Sciences
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d374106.2934798287!2d-79.11410949052187!3d42.900161599625655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d312af82c770df%3A0xd7f9a7357ec78bee!2sJacobs%20School%20Of%20Medicine%20And%20Biomedical%20Sciences!5e0!3m2!1sen!2suk!4v1579598356116!5m2!1sen!2suk"
+width="600" height="450" frameborder="0" style="border:0;"
+allowfullscreen=""></iframe>
+
 ## Downtown Buffalo Campus
 
 ![](img/downtown.png){ width=100% }
