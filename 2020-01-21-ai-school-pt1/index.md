@@ -142,6 +142,19 @@ Engineer-Physician Training
 <ul><li class="fragment">“How do I do it?”</li></ul>
 </div>
 
+## Motivations
+
+We believe that **digital pathology is inevitable.**
+
+<p class="fragment">
+Doctors will encounter this technology, **either directly or indirectly**.
+</p>
+
+<p class="fragment">
+They should be trained in sufficient detail to responsibly, intelligently
+interact with algorithms and their outputs.
+</p>
+
 # 
 ## Understanding the Methodology
 
