@@ -1,0 +1,6 @@
+#+TITLE: README
+
+Slides for my presentation to the UCI AI pathology interest group on September 22, 2021.
+
+These slides are in the form of an org-mode document exported to Reveal.js.
+

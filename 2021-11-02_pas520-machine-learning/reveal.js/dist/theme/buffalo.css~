@@ -1,0 +1,259 @@
+/*************************************
+Custom University at Buffalo style 
+template for nbconvert of jupyter 
+notebooks to reveal.js slideshows.
+This file overrides standard reveal CSS
+components, and is intended to be 
+compatible with the new nbconvert 6.0
+templating system.
+For questions or comments, contact 
+Scott Doyle.
+*************************************/
+
+@font-face {
+  font-family: 'cavolini';
+  src: url('fonts/cavolini.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+}
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/* Overwrite font settings vs. index.html.j2 */
+:root {
+    --jp-ui-font-size1: 25px;       /* instead of 14px */
+    --jp-content-font-size1: 25px;  /* instead of 14px */
+    --jp-code-font-size: 20px;      /* instead of 13px */
+    --jp-cell-prompt-width: 110px;  /* instead of 64px */
+}
+
+/* Overwrite the H1 header positioning for Title / Section slides */
+.jp-RenderedHTMLCommon h1:first-child {
+    /*margin-top: 30%;*/
+    text-align: center;
+}
+
+.reveal {
+  font-size: 160%;
+  font-family: "Lato", sans-serif;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  color: #005bbb;
+  text-transform: capitalize;
+  font-family: "Montserrat";
+}
+
+/* CUSTOM FONTS */
+.reveal h1 {
+  font-size: 3.77em; }
+
+h1.title {
+    font-size: 2.5em;
+    line-height: 1.2em; }
+
+.reveal h2 {
+  font-size: 2.11em; }
+
+.reveal h3 {
+  font-size: 1.55em; }
+
+.reveal h4 {
+  font-size: 1em; }
+
+.reveal h1 {
+  text-shadow: none; }
+
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top; }
+
+.reveal a {
+  color: #00008B;
+  text-decoration: none;
+  transition: color .15s ease; }
+
+.reveal a:hover {
+  color: #0000f1;
+  text-shadow: none;
+  border: none; }
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #00003f; }
+
+/*.reveal h2 {
+  margin-top: calc(0.5 * var(--jp-content-heading-margin-top));
+  font-size: var(--jp-content-font-size4);
+  line-height: var(--jp-content-heading-line-height);
+  font-weight: var(--jp-content-heading-font-weight);
+  font-style: normal;
+  margin: var(--jp-content-heading-margin-top) 0 var(--jp-content-heading-margin-bottom) 0;
+}*/
+
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reveal section figure {
+    margin: 0;
+    text-align: center;
+}
+.reveal section figure figcaption {
+    font-family: "cavolini";
+    color: #e56a54ff;
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal strong,
+.reveal b {
+  color: #e56a54;
+}
+.reveal table {
+    font-size: var(--jp-content-font-size1);
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+
+div.jp-InputArea-editor {
+  padding: 0.06em;
+}
+
+div.code_cell {
+  background-color: transparent;
+}
+
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+
+div.jp-OutputPrompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+
+/* Column elements */
+div.twocolumn {
+  float: left;
+  width: 45%;
+  padding: 5px;
+}
+div.threecolumn {
+  float: left;
+  width: 33%;
+  padding: 0px;
+}
+div.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+/* Title and Section Slides */
+div.titleslide,
+div.sectionslide {
+    /* We have to insert a margin, everything else is top-aligned*/
+    margin-top: 20%;
+    /* Also, center this slide */
+    text-align: center;
+}
+
+/* iframe stuff */
+/*  */
+
+#wrap { width: 1200px; height: 600px; padding: 0; overflow: hidden; }
+#frame { width: 100%; height: 100%; border: 1px solid black; }
+#frame {
+    -ms-zoom: 0.75;
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.75);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;
+}
+
+/* Reveal navigation controls */
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+
+/* Scrollbars */
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
+}
