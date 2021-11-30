@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Digital Image Analysis</title>
+    <meta name="author" content="(Scott Doyle)"/>
+    <style type="text/css">
+	.underline { text-decoration: underline; }
+    </style>
+
+    <link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
+    <link rel="stylesheet" href="./reveal.js/dist/theme/buffalo.css" id="theme"/>
+
+    <!-- Set up reveal chalkboard -->
+    <script src="reveal.js/plugin/chalkboard/plugin.js"></script>
+
+    <!-- JQuery and Require -- comment out for now
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    -->
+
+    <!-- Set up plotly CDN -->
+    <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+    <script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section id="sec-title-slide">
+	<h1 class="title">Digital Image Analysis<br><small style="color: #e56a54ff;">
+	Machine Learning and AI</small></h1>
+	<!--<h2 class="author">Scott Doyle</h2>-->
+	<p>Scott Doyle<br>
+	  2021-11-30<br>
+	  Dept. of Pathology &amp; Anatomical Sciences<br>
+	  scottdoy@buffalo.edu
+	</p>
+      </section>
+
+<!--      <section id="table-of-contents">
+	<section>
+	  <div id="table-of-contents">
+	    <h2>Outline</h2>
+	    <center>
+	      <div class="row">
+		<div class="twocolumn">
+		  <figure>
+		    <img src="img/icon-brain.svg" style="height: 150px">
+		    <figcaption>Artificial Intelligence</figcaption>
+		  </figure>
+		</div>
+
+		<div class="twocolumn fragment fade-left" data-fragment-index="1">
+		  <figure>
+		    <img src="img/icon-microscope.svg" style="height: 150px">
+		    <figcaption>Microscopy Imaging</figcaption>
+		  </figure>
+		</div>
+
+	      <div class="row">
+		<div class="twocolumn">How does AI work?</div>
+		<div class="twocolumn fragment fade-left" data-fragment-index="1">How can AI help microscopy?</div>
+	      </div>
+	    </center>
+	</section>
+      </section>-->
+
+      <section id="basics-machine-learning-ai">
+	<section>
+	  <h1>Basics<br><small style="color: #e56a54ff">Machine Learning and AI</small></h1>
+	</section>
+
+	<section>
+	  <h2>Machine Learning Definitions</h2>
+	  <p><b>Machine Learning</b> (ML) uses <strong>collected data</strong> to do something useful.</p>
+	  <ul>
+	    <li class="fragment fade-left">Find underlying patterns (<strong>knowledge discovery</strong>)</li>
+	    <li class="fragment fade-left">Simplify a complex phenomenon (<strong>model building</strong>)</li>
+	    <li class="fragment fade-left">Place data into categories (<strong>classification</strong>)</li>
+	    <li class="fragment fade-left">Predict future data (<strong>regression</strong>)</li>
+	  </ul>
+	</section>
+
+	<section>
+	  <h2>Machine Learning Definitions</h2>
+	  <p>The job of the ML expert is to:</p>
+	  <ul>
+	    <li class="fragment fade-left">Understand and identify the <strong>goal</strong></li>
+	    <li class="fragment fade-left">Collect <strong>data</strong></li>
+	    <li class="fragment fade-left">Select an appropriate <strong>model</strong> or <strong>algorithm</strong></li>
+	    <li class="fragment fade-left">Evaluate the system in terms of <strong>costs</strong></li>
+	  </ul>
+	</section>
+
+	<section>
+	  <h2>Types of Machine Learning</h2>
+	  <div class="row">
+	    <div class="twocolumn">
+	      <center>
+		<strong>Supervised Learning</strong>
+		<p class="fragment fade-up">Use <strong>labeled datasets</strong> to classify new, unseen data</p>
+	      </center>
+	    </div>
+	    <div class="twocolumn">
+	      <center>
+		<strong>Unsupervised Learning</strong>
+		<p class="fragment fade-up">Use <strong>unlabeled data</strong> to identify natural groups</p>
+	      </center>
+	    </div>
+	  </div>
+	</section>
+
+	<section>
+	  <h2>Data Definitions</h2>
+	  <p>The starting point for all ML algorithms is <strong>data</strong>.</p>
+	  <p class="fragment fade-left">So... what do we mean by "data"?</p>
+	</section>
+
+	<section>
+	  <h2>Data Comes in Many Forms</h2>
+	  <figure>
+	    <img src="img/data_formats.png" alt="Complex, Multi-Modal Data" style="width:70.0%" />
+	    <figcaption>Complex, Multi-Modal Data</figcaption>
+	  </figure>
+	</section>
+
+	<section>
+	  <h2>Atoms to Anatomy Paradigm</h2>
+	    <div class="row">
+		<div class="threecolumn">
+		    <img src="img/ata02_b.png" style="height: 200px; width: 325px"/>
+		</div>
+		<div class="threecolumn">
+		    <img src="img/ata05_b.png" style="height: 200px; width: 325px"/>
+		</div>
+		<div class="threecolumn">
+		    <img src="img/ata03_b.png" style="height: 200px; width: 325px"/>
+		</div>
+	    </div>
+	    <div class="row">
+		<div class="threecolumn">
+		    <img src="img/ata06_b.png" style="height: 200px; width: 325px"/>
+		</div>
+		<div class="threecolumn">
+		    <img src="img/ata04_b.png" style="height: 200px; width: 325px"/>
+		</div>
+		<div class="threecolumn">
+		    <img src="img/ata07_b.png" style="height: 200px; width: 325px"/>
+		</div>
+	    </div>
+	</section>
+
+	<section>
+	  <h2>Quantitative Structure</h2>
+	  <p>Biological structure is <strong>primary data</strong>.</p>
+	  <p class="fragment fade-left">We can quantify <strong>biological structure</strong>.</p>
+	  <p class="fragment fade-left">We can <strong>model</strong> relationships between <strong>structure and disease</strong>.</p>
+	</section>
+
+	<section>
+	  <h2>Fundamental Hypothesis</h2>
+	  <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+	    <div class="row">
+		<div class="twocolumn">
+		    <img src="img/badve2008_fig4b1.svg" style="width:100.0%">
+		</div>
+		<div class="twocolumn">
+		    <img src="img/badve2008_fig4b2.svg" style="width:100.0%">
+		</div>
+	    </div>
+	  <p style="text-align: left;"><small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004)</small></p>
+
+	</section>
+
+	<section>
+	  <h2>Fundamental Hypothesis</h2>
+	  <p>Changes in genomic expression manifest as physical changes in tumor morphology</p>
+	  <figure>
+	    <img src="img/paik2004_fig2.svg" style="width:45.0%" />
+	  </figure>
+	  <p style="text-align: left;"><small> S. S. Badve et al., JCO (2008), Paik et al., N Engl J Med (2004)</small></p>
+	</section>
+      </section>
+
+      <section id="example-problem">
+        <section id="example-problem">
+	  <h1>Example Problem<br><small style="color: #e56a54ff">Fine Needle Aspirate Classification</small></h1>
+        </section>
+
+        <section id="example-biomedical-image-analysis">
+          <h2>Biomedical Image Analysis</h2>
+          <div class="row">
+            <div class="twocolumn">
+              <img src="img/fna_92_5311_benign.png" style="width:100.0%">
+            </div>
+            <div class="twocolumn">
+              <img src="img/fna_91_5691_malignant.png" style="width:100.0%">
+            </div>
+          </div>
+        </section>
+
+        <section id="fine-needle-aspirates">
+          <h2>Fine Needle Aspirates</h2>
+          <div class="row">
+            <div class="twocolumn">
+              <figure>
+                <img src="img/fna_92_5311_benign.png" alt="Benign FNA Image" style="width:80.0%" />
+		<figcaption>Benign FNA Image</figcaption>
+              </figure>
+            </div>
+            <div class="twocolumn">
+              <figure>
+                <img src="img/fna_91_5691_malignant.png" alt="Malignant FNA Image" style="width:80.0%" />
+		<figcaption>Malignant FNA Image</figcaption>
+              </figure>
+            </div>
+          </div>
+	  <p class="fragment"><center>
+            <strong>Problem Statement:</strong> Predict whether a patient’s tumor is benign or malignant, given an FNA image
+	  </center></p>
+        </section>
+
+        <section id="building-informative-features">
+          <h2>Building Informative Features</h2>
+          <p class="fragment">
+          <strong>Domain knowledge</strong> identifies useful features.
+          </p>
+          <p class="fragment">
+          Pathologists already distinguish <strong>benign</strong> from <strong>malignant</strong> tumors.
+          </p>
+          <p class="fragment">
+          Our job is to convert <strong>qualitative</strong> features to <strong>quantitative</strong> ones.
+          </p>
+        </section>
+
+        <section id="building-informative-features-1" class="level2">
+          <h2>Building Informative Features</h2>
+          <p>The pathologist lists <strong>cell nuclei</strong> features of importance:</p>
+          <div class="row">
+            <div class="twocolumn">
+              <ol type="1">
+                <li>Radius</li>
+                <li>Texture</li>
+                <li>Perimeter</li>
+                <li>Area</li>
+                <li>Smoothness</li>
+              </ol>
+            </div>
+            <div class="twocolumn">
+              <ol start="6" type="1">
+                <li>Compactness</li>
+                <li>Concavity</li>
+                <li>Concave Points</li>
+                <li>Symmetry</li>
+                <li>Fractal Dimension</li>
+              </ol>
+            </div>
+          </div>
+
+          <p class="fragment">
+          <strong>Feature extraction</strong> results in 30 feature values per image.
+          </p>
+        </section>
+
+        <section id="selecting-features-for-the-fna" class="level2">
+          <h2>Selecting Features for the FNA</h2>
+          <p>To begin, we collect <strong>training samples</strong> to build a model.</p>
+          <ul>
+            <li class="fragment">Collect a lot of example images for each class</li>
+            <li class="fragment">Get our expert to label each image as “Malignant” or “Benign”</li>
+            <li class="fragment">Measure the features of interest (image analysis or by hand)</li>
+            <li class="fragment">Build a histogram of the measured feature</li>
+          </ul>
+        </section>
+
+        <section id="texture-of-the-nuclei">
+          <h2>Texture of the Nuclei</h2>
+	  <div id="wrap">
+          <iframe id="frame" frameborder="0" seamless="seamless" scrolling="no" src="img/texture_mean.html"></iframe>
+	  </div>
+        </section>
+
+        <section id="average-radius-of-the-nuclei" class="level2">
+          <h2>Average Radius of the Nuclei</h2>
+	  <div id="wrap">
+          <iframe id="frame" frameborder="0" seamless="seamless" scrolling="no" src="img/radius_mean.html"></iframe>
+	  </div>
+        </section>
+
+        <section id="characteristics-of-good-features" class="level2">
+          <h2>Characteristics of Good Features</h2>
+          <div class="txt-left">
+          <p class="fragment">
+          <strong>Descriptive:</strong> Similar within a class, and different between classes
+          </p>
+          <p class="fragment">
+          <strong>Relevant:</strong> Features should make sense
+          </p>
+          <p class="fragment">
+          <strong>Invariant:</strong> Not dependent on how you measure them
+          </p>
+          </div>
+        </section>
+
+        <section id="calculating-probabilities-from-features" class="level2">
+          <h2>Calculating Probabilities from Features</h2>
+	  <div id="wrap">
+            <iframe id="frame" frameborder="0" seamless="seamless" scrolling="no" src="img/pdf_cdf.html"></iframe>
+	  </div>
+        </section>
+
+        <section id="combinations-of-features" class="level2">
+          <h2>Combinations of Features</h2>
+          <p><strong>Combining features</strong> often yields greater class separation.</p>
+        </section>
+
+        <section id="multivariate-distribution" class="level2">
+          <h2>Multivariate Distribution</h2>
+	  <div id="wrap">
+            <iframe id="frame" frameborder="0" seamless="seamless" scrolling="no" src="img/scatter_histogram_plot.html"></iframe>
+	  </div>
+        </section>
+
+        <section id="multivariate-distribution-1" class="level2">
+          <h2>Multivariate Distribution</h2>
+	  <div id="wrap">
+            <iframe id="frame" frameborder="0" seamless="seamless" scrolling="no" src="img/scatter_plot.html"></iframe>
+	  </div>
+        </section>
+
+        <section id="variance-vs.-generalization" class="level2">
+          <h2>Variance vs. Generalization</h2>
+          <p>
+          Linear boundaries do not model <strong>variance</strong> and miss obvious trends.
+          </p>
+          <p class="fragment">
+          Complex boundaries fit training perfectly, but do not <strong>generalize</strong>.
+          </p>
+          <p class="fragment">
+          In general, you want the <strong>simplest</strong> model with the best <strong>performance</strong>.
+          </p>
+        </section>
+
+        <section id="tradeoff-variance-vs.-generalization" class="level2">
+          <h2>Tradeoff: Variance vs. Generalization</h2>
+          <p>
+          Each of these decision boundaries makes errors!
+          </p>
+          <p class="fragment">
+          There is always a tradeoff; we need to consider the <strong>cost</strong>.
+          </p>
+          <p class="fragment">
+          Cost is defined by our goals and acceptable performance.
+          </p>
+        </section>
+
+        <section id="costs" class="level2">
+          <h2>Costs</h2>
+          <p>Should we prioritize some kinds of errors over others?</p>
+          <div class="fragment txt-box">
+          <p>Not all mistakes carry the same cost. For example:</p>
+          <ul>
+          <li>A patient is told they have a tumor when they do not (<strong>false positive</strong>)</li>
+          <li>A patient is told they are cancer-free when they are not (<strong>false negative</strong>)</li>
+          </ul>
+          </div>
+        </section>
+
+      </section>
+
+      <section id="section-3" class="level1">
+        <section id="neural-networks" class="level2">
+          <h1>Neural Networks<br><small style="color: #e56a54ff">Building Blocks for Deep Learning</small></h1>
+        </section>
+
+        <section id="biological-inspiration-for-neural-networks" class="level2">
+          <h2>Biological Inspiration for Neural Networks</h2>
+          <figure>
+          <img src="img/biological_neuron.png" alt="Biological Neuron" style="width:75.0%" /><figcaption>Biological Neuron</figcaption>
+          </figure>
+        </section>
+
+        <section id="anatomy-of-an-artificial-neuron" class="level2">
+          <h2>Anatomy of a[n Artificial] Neuron</h2>
+          <p><img src="img/ann.png" style="width:75.0%" /></p>
+        </section>
+
+        <section id="simple-perceptron-decision-space" class="level2">
+          <h2>Simple Perceptron Decision Space</h2>
+          <figure>
+          <img src="img/simple_perceptron_decision_space.png" alt="Simple Perceptron" style="width:75.0%" /><figcaption>Simple Perceptron</figcaption>
+          </figure>
+          <p style="text-align: left;">
+          <small> Richard O. Duda, Peter E. Hart, David G. Stork, “Pattern Classification, 2nd Edition” </small>
+          </p>
+        </section>
+
+        <section id="hidden-layers-complex-decision-space" class="level2">
+          <h2>Hidden Layers: Complex Decision Space</h2>
+          <figure>
+          <img src="img/hidden_layer_complex_decision_space.png" alt="Artificial Neural Network" style="width:75.0%" /><figcaption>Artificial Neural Network</figcaption>
+          </figure>
+        </section>
+
+        <section id="simple-problem-xor-classification" class="level2">
+          <h2>Simple Problem: XOR Classification</h2>
+          <figure>
+          <img src="img/xor_classification.png" alt="XOR Problem" style="width:35.0%" /><figcaption>XOR Problem</figcaption>
+          </figure>
+        </section>
+
+        <section id="neural-network-solution-to-xor" class="level2">
+          <h2>Neural Network Solution to XOR</h2>
+          <figure>
+          <img src="img/xor_solution.png" alt="XOR Problem" style="width:50.0%" /><figcaption>XOR Problem</figcaption>
+          </figure>
+        </section>
+
+        <section id="details-of-neural-network-weights" class="level2">
+          <h2>Details of Neural Network Weights</h2>
+          <figure>
+          <img src="img/network_weights.png" alt="Network Weights" style="width:35.0%" /><figcaption>Network Weights</figcaption>
+          </figure>
+        </section>
+
+        <section id="training-neural-networks-finding-the-weights" class="level2">
+          <h2>Training Neural Networks: Finding the Weights</h2>
+          <div class="row">
+
+            <div class="twocolumn">
+              <figure>
+              <img src="img/backpropagation_schematic.png" alt="Backpropagation Schematic" style="width:100.0%" /><figcaption>Backpropagation Schematic</figcaption>
+              </figure>
+            </div>
+
+	    <div class="twocolumn">
+              <p class="fragment" data-fragment-index="3">Step 3: Calculate error of the result</p>
+              <p class="fragment" data-fragment-index="4">Step 4: Calculate gradients and modify weights and biases</p>
+              <p class="fragment" data-fragment-index="2">Step 2: Calculate network output</p>
+	      <br>
+              <p class="fragment" data-fragment-index="1">Step 1: Pick a training example</p>
+	    </div>
+	  
+          </div>
+        </section>
+
+        <section id="why-is-it-called-a-black-box" class="level2">
+          <h2>Why Is It Called A “Black Box”?</h2>
+	  <div id="wrap">
+            <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="https://playground.tensorflow.org/"></iframe>
+	  </div>
+        </section>
+      </section>
+
+      <!--
+      <section>
+	<section>
+	  <h1>Oral Cavity Cancer<br><small style="color: #e56a54ff">Problem Definition</small></h1>
+	</section>
+
+	<section>
+	  <h2>Oral Cavity Cancer</h2>
+
+	  <p><b>Low Stage</b> (Stage I/II) Oral Cavity Cancer (OCC) Patients</p>
+
+	  <ul>
+	    <li class="fragment fade-left">Treated with <b>surgery alone</b></li>
+	    <li class="fragment fade-left">25% (Stage I), 37% (Stage II) patients: <b>loco-regional recurrence (LRR)</b></li>
+	    <li class="fragment fade-left">Staging alone <b>fails</b> to identify high-risk patients</li>
+	  </ul>
+
+	  <p class="fragment fade-left"><b>Histological Risk Model (HRM)</b> predicts LRR by combining:</p>
+
+
+	  <ul>
+	    <li class="fragment fade-left">Perineural invasion (PNI)</li>
+	    <li class="fragment fade-left">Lymphocytic host response (LHR)</li>
+	    <li class="fragment fade-left">Worst pattern of invasion (WPOI)</li>
+	  </ul>
+	</section>
+
+	<section>
+	  <h2>Histological Risk Model (HRM)</h2>
+
+	  <table style="font-size:smaller">
+	    <tr>
+              <th></th>
+              <th>Variable</th>
+              <th>Definition</th>
+              <th>Points</th>
+	    </tr>
+	    <tr style="background: cyan">
+              <td>WPOI</td>
+              <td>Type 1</td>
+              <td>Pushing border</td>
+              <td>0</td>
+	    </tr>
+	    <tr style="background: cyan">
+              <td></td>
+              <td>Type 2</td>
+              <td>Finger-like growth</td>
+              <td>0</td>
+	    </tr>
+	    <tr style="background: cyan">
+              <td></td>
+              <td>Type 3</td>
+              <td>Large separate islands, &gt;15 cells per island</td>
+              <td>0</td>
+	    </tr>
+	    <tr style="background: cyan">
+              <td></td>
+              <td>Type 4</td>
+              <td>Small tumor islands, <=15 cells per island</td>
+					    <td>+1</td>
+	    </tr>
+	    <tr style="background: cyan">
+              <td></td>
+              <td>Type 5</td>
+              <td>Tumor satellites, >=1 mm from MT or next-closest satellite</td>
+              <td>+3</td>
+	    </tr>
+	    <tr style="background: yellow">
+              <td>LHR</td>
+              <td>Type 1 (Strong)</td>
+              <td>Lymphoid nodules at advancing edge in each 4x field</td>
+              <td>0</td>
+	    </tr>
+	    <tr style="background: yellow">
+              <td></td>
+              <td>Type 2 (Intermediate)</td>
+              <td>Lymphoid nodules in some but not all 4x fields</td>
+              <td>+1</td>
+	    </tr>
+	    <tr style="background: yellow">
+              <td></td>
+              <td>Type 3 (Weak)</td>
+              <td>Little or no host response; No lymphoid nodule</td>
+              <td>+3</td>
+	    </tr>
+	    <tr style="background: orange">
+              <td>PNI</td>
+              <td>None</td>
+              <td>None</td>
+              <td>0</td>
+	    </tr>
+	    <tr style="background: orange">
+              <td></td>
+              <td>Small Nerves</td>
+              <td>Tumor wrapping around nerves; <1 mm diameter</td>
+						   <td>+1</td>
+	    </tr>
+	    <tr style="background: orange">
+              <td></td>
+              <td>Large Nerves</td>
+              <td>Tumor wrapping around nerves; >=1 mm diameter</td>
+              <td>+3</td>
+	    </tr>
+	  </table>
+	</section>
+
+	<section>
+	  <h2>HRM Predicts Survival, Progression</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/brandwein2010_death-all-causes.png" style="width: 100%"/>
+		<figcaption>Death (All Causes)</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/brandwein2010_disease-progression.png" style="width: 100%" />
+		<figcaption>Disease Progression</figcaption>
+              </figure>
+	    </div>
+	  </div>
+
+	  <p style="text-align: left;"><small><a style="text-decoration: none" href="https://www.ncbi.nlm.nih.gov/pubmed/20414102">Brandwein-Gensler, M., et al. (2010)</a></small></p>
+	</section>
+	
+	<section>
+	  <h2>HRM Correlates with LRR and DSS</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/li2013_hrm-lrr.png" style="width: 100%"/>
+		<figcaption>Overall Risk: Loco-regional Recurrence</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/li2013_hrm-dss.png" style="width: 85%"/>
+		<figcaption>Overall Risk: Disease-Specific Mortality</figcaption>
+              </figure>
+	    </div>
+	  </div>
+
+	  <small style="text-align: right"><a href="https://link.springer.com/article/10.1007/s12105-012-0412-1">Li, Y., et al. (2013)</a></small>
+	</section>
+
+	<section>
+	  <h2>WPOI: Best Single Criteria for Predicting Outcome</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/li2013_wpoi-lrr.png" style="width: 100%"/>
+		<figcaption>WPOI: Loco-regional Recurrence</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/li2013_wpoi-dss.png" style="width: 85%"/>
+		<figcaption>WPOI: Disease-Specific Mortality</figcaption>
+              </figure>
+	    </div>
+	  </div>
+
+	  <small style="text-align: right"><a href="https://link.springer.com/article/10.1007/s12105-012-0412-1">Li, Y., et al. (2013)</a></small>
+	</section>
+
+
+	<section>
+	  <h2>WPOI: Type 4</h2>
+
+	  <figure>
+	    <img src="img/wpoi4.png"/>
+	    <figcaption>Worst Pattern of Invasion 4</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>WPOI: Type 4</h2>
+
+	  <figure>
+	    <img src="img/wpoi4-closeup.png"/>
+	    <figcaption>Worst Pattern of Invasion 4</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>WPOI: Type 5</h2>
+
+	  <figure>
+	    <img src="img/wpoi5.png"/>
+	    <figcaption>Worst Pattern of Invasion 5</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Successful Models Can Be Improved</h2>
+
+	  <p>The HRM can be extended through computational pathology.</p>
+
+	  <ul>
+	    <li class="fragment fade-left"><b>Robust, automated</b> method for tumor assessment at low cost</li>
+	    <li class="fragment fade-left">Generate <b>accurate cut-points</b> through quantitative image analysis</li>
+	    <li class="fragment fade-left">Visualize <b>structural data</b> using computational representations</li>
+	  </ul>
+          
+	  <p class="fragment fade-left"><b>Hypothesis:</b> Computational tools can be used to predict tumor progression using quantitative architectural features.</p>
+	</section>
+	
+	<section>
+	  <h2>Whole Slide Imaging (WSI)</h2>
+
+	  <figure>
+	    <img src="img/wsi_example.png">
+	    <figcaption>Whole Slide Image</figcaption>
+	  </figure>
+
+	  <ul>
+	    <li>Hematoxylin &amp; Eosin stained OCC tumor resections</li>
+	    <li>Aperio and Olympus Scanners, 40x magnification (0.25 microns per pixel)</li>
+	    <li>8-12 GB per slide</li>
+	  </ul>
+	</section>
+	
+	<section>
+	  <h2>Region of Interest Cropping</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width:35%;">
+              <p>Cropped ROIs</p>
+              <ul>
+		<li>32 WPOI-4</li>
+		<li>34 WPOI-5</li>
+              </ul>
+              
+              <p>Progression (5-year)</p>
+              <ul>
+		<li>29 Yes</li>
+		<li>37 No</li>
+              </ul>
+              
+              <p>Occult Metastasis:</p>
+              <ul>
+		<li>11 Yes</li>
+		<li>39 No</li>
+              </ul>
+	    </div>
+	    <div class="twocolumn" style="width:60%">
+              <figure>
+		<img src="img/wpoi4-blank.png">
+		<figcaption>WPOI 4 ROI</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Image Annotation</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width:35%">
+              Hand-annotated main tumor and satellite regions
+
+              <ol>
+		<li>Analysis of tumor-host architecture</li>
+		<li>Training data for tissue mapping</li>
+              </ol>
+	    </div>
+	    <div class="twocolumn" style="width:60%">
+              <figure>
+		<img src="img/wpoi4-seg.png">
+		<figcaption>WPOI 4 Annotation</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Comparing Annotations</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width:42%">
+              <figure>
+		<img src="img/wpoi4-seg.png">
+		<figcaption>WPOI 4</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn" style="width:55%">
+              <figure>
+		<img src="img/wpoi5-seg.png">
+		<figcaption>WPOI 5</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+
+	<section>
+	  <h2>Graph-Based Features</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width: 35%">
+              Architectural graph features:
+              
+              <ul>
+		<li>Delaunay Triangulation</li>
+		<li>Satellite coverage area</li>
+		<li>Minimum Spanning Tree</li>
+		<li>Wave Graph</li>
+              </ul>
+	    </div>
+	    <div class="twocolumn" style="width:60%">
+              <figure>
+		<img src="img/wpoi4-delaunay.png">
+		<figcaption>WPOI 4 Annotation</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Graph-Based Features</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="margin-top:10%; width:35%">
+              Architectural graph features:
+              
+              <ul>
+		<li>Delaunay Triangulation</li>
+		<li>Satellite coverage area</li>
+		<li>Minimum Spanning Tree</li>
+		<li>Wave Graph</li>
+              </ul>
+	    </div>
+	    <div class="twocolumn" style="width: 60%;">
+              <figure> 
+		<img src="img/wpoi4-wave.png">
+		<figcaption>WPOI 4 Annotation</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Delaunay Graphs</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width:42%">
+              <figure>
+		<img src="img/wpoi4-delaunay.png">
+		<figcaption>WPOI 4 Delaunay</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn" style="width:55%">
+              <figure>
+		<img src="img/wpoi5-delaunay.png">
+		<figcaption>WPOI 5 Delaunay</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Wave-like Graphs</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width:42%">
+              <figure>
+		<img src="img/wpoi4-wave.png">
+		<figcaption>WPOI 4 Wave</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn" style="width:55%">
+              <figure>
+		<img src="img/wpoi5-wave.png">
+		<figcaption>WPOI 5 Wave</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Pattern of Invasion (4 vs. 5)</h2>
+
+	  <figure>
+	    <img src="img/scatter_wpoi.png" style="width: 60%">
+	    <figcaption>WPOI 4 vs 5</figcaption>
+	  </figure>
+	</section>
+	
+
+	<section>
+	  <h2>Tumor Progression Status</h2>
+
+	  <figure>
+	    <img src="img/scatter_progression.png" style="width: 60%">
+	    <figcaption>Progression vs. Non-progression</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Occult Metastasis</h2>
+
+	  <figure>
+	    <img src="img/scatter_occult-mets.png" style="width: 60%">
+	    <figcaption>Occult Metastasis</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Room for Improvement</h2>
+
+	  <p>These results are promising, but not scalable.<p>
+
+	    <ul> 
+	      <li class="fragment fade-left"><b>ROI-based</b>: Requires input from pathologist</li>
+	      <li class="fragment fade-left"><b>Hand annotations</b>: Time consuming, cannot scale to WSI</li>
+	      <li class="fragment fade-left"><b>Subjective</b>: Varies among annotators, ambiguous class labels</li>
+	      <li class="fragment fade-left"><b>Recruitment</b>: Cannot easily add annotators, logistical problems</li>
+	    </ul>
+	</section>
+	
+	<section>
+	  <h2>What If...</h2>
+
+	  <p>Can we use AI to automatically create tissue maps from whole-slide images, without having to select ROIs?<p>
+
+	  <p class="fragment fade-left">(Yes.)</p>
+	</section>
+	
+      </section>
+
+      <section>
+
+	<section>
+	  <h1>Neural Networks<br><small style="color: #e56a54ff">Building Blocks for Deep Learning</small></h1>
+	</section>
+
+	<section>
+	  <h2>Biological Inspiration</h2>
+
+	  <figure>
+	    <img src="img/biological_neuron.png" alt="Biological Neuron" style="width:75.0%" /><figcaption>Biological Neuron</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Anatomy of a[n Artificial] Neuron</h2>
+
+	  <figure>
+	    <img src="img/ann.png" style="width:75.0%" />
+	    <figcaption>Artificial Neuron</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Simple Perceptron Decision Space</h2>
+
+	  <figure>
+	    <img src="img/simple_perceptron_decision_space.png" alt="Simple Perceptron" style="width:75.0%" />
+	    <figcaption>Simple Perceptron</figcaption>
+	  </figure>
+	</section>
+
+	<section>
+	  <h2>Hidden Layers: Complex Decision Space</h2>
+
+	  <figure>
+	    <img src="img/hidden_layer_complex_decision_space.png" alt="Artificial Neural Network" style="width:75.0%" />
+	    <figcaption>Artificial Neural Network</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Simple Problem: XOR Classification</h2>
+
+	  <figure>
+	    <img src="img/xor_classification.png" alt="XOR Problem" style="width:35.0%" />
+	    <figcaption>XOR Problem</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Neural Network Solution to XOR</h2>
+
+	  <figure>
+	    <img src="img/xor_solution.png" alt="XOR Problem" style="width:50.0%" />
+	    <figcaption>XOR Problem</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Details of Neural Network Weights</h2>
+
+	  <figure>
+	    <img src="img/network_weights.png" alt="Network Weights" style="width:35.0%" />
+	    <figcaption>Network Weights</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Training Neural Networks</h2>
+
+	  <div class="row">
+	    <div class="twocolumn" style="width: 60%">
+              <figure>
+		<img src="img/backpropagation_schematic.png" alt="Backpropagation Schematic" style="width:100.0%" />
+		<figcaption>Backpropagation Schematic</figcaption>
+              </figure>
+	    </div>
+	    
+	    <div class="twocolumn" style="width: 35%;font-family: 'cavolini';color: #e56a54ff;">
+              <p class="fragment fade-left" data-fragment-index="3" >Step 3: Calculate error of the result</p>
+              <p class="fragment fade-left" data-fragment-index="4" >Step 4: Calculate gradients and modify weights and biases</p>
+              <p class="fragment fade-left" data-fragment-index="2" >Step 2: Calculate network output</p>
+              <br><br><br>
+              <p class="fragment fade-left" data-fragment-index="1" >Step 1: Pick a training example</p>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Why Is It Called A “Black Box”?</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="https://playground.tensorflow.org/"></iframe>
+	  </div>
+	</section>
+
+      </section>
+      -->
+      
+      <section>
+
+	<section>
+	  <h1>Basics of Image AI<br><small style="color: #e56a54ff">Handwriting Recognition</small></h2>
+	</section>
+
+	<section>
+	  <h2>"Strong" AI</h2>
+
+	  <figure>
+	    <center>
+	      <div class="row">
+		<div class="threecolumn">
+		  <img src="img/hal5000.png" style="width: 95%; height: 150px">
+		</div>
+		<div class="threecolumn">
+		  <img src="img/johnny5.png" style="width: 95%; height: 150px">
+		</div>
+		<div class="threecolumn">
+		  <img src="img/cylon.png" style="width: 95%; height: 150px">
+		</div>
+	      </div>
+	      <figcaption>General Artificial Intelligence (GAI) and Learning</figcaption>
+	    </center>
+	  </figure>
+	</section>
+
+	<section>
+	  <h2>"Weak" AI</h2>
+
+	  <figure>
+	    <center>
+	      <div class="row">
+		<div class="threecolumn">
+		  <img src="img/self-driving.png" style="width: 95%; height: 150px">
+		</div>
+		<div class="threecolumn">
+		  <img src="img/face-detection.png" style="width: 95%; height: 150px">
+		</div>
+		<div class="threecolumn">
+		  <img src="img/google-lens.png" style="width: 95%; height: 150px">
+		</div>
+	      </div>
+	      <figcaption>Task-Specific Algorithms Based on Massive Datasets</figcaption>
+	    </center>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Innovations for Deep Learning</h2>
+
+	  <center>
+	    <div class="row">
+              <div class="threecolumn">
+		<figure>
+                  <img src="img/icon-stack.svg" style="height: 150px">
+                  <figcaption>Large Datasets</figcaption>
+		</figure>
+              </div>
+              <div class="threecolumn fragment fade-left" data-fragment-index="1">
+		<figure>
+                  <img src="img/icon-chip.svg" style="height: 150px">
+                  <figcaption>Commodity Hardware</figcaption>
+		</figure>
+              </div>
+              <div class="threecolumn fragment fade-left" data-fragment-index="2">
+		<figure>
+                  <img src="img/icon-neuralnet.svg" style="height: 150px">
+                  <figcaption>Efficient Training</figcaption>
+		</figure>
+              </div>
+	    </div>
+	    <div class="row">
+              <div class="threecolumn">Internet-based datasets, crowdsourced labels</div>
+              <div class="threecolumn fragment fade-left" data-fragment-index="1">Graphical Processing Units (GPUs) for video games</div>
+              <div class="threecolumn fragment fade-left" data-fragment-index="2">Parallel backpropagation, batch processing, gradient descent</div>
+	    </div>
+	  </center>
+	</section>
+	<section>
+	  <h2>Handwriting Recognition</h2>
+
+	  <figure>
+	    <center>
+	      <img src="img/MnistExamples.png" style="width:80%;filter: invert(1);background: black;">
+	      <figcaption>MNIST Handwriting Dataset</figcaption>
+	    </center>
+	  </figure>
+	</section>
+
+	<section>
+	  <h2>Handwriting Recognition</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_mnist_sample.html"></iframe>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Unrolled Training Samples</h2>
+
+	  To a neural network, a sample might look like this:
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_mnist_zero.html"></iframe>
+	  </div>
+	</section>
+
+	<section>
+	  <h2>Compare Samples</h2>
+
+	  Compare a set of "0" to a set of "1":
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_mnist_comparison.html"></iframe>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Images in Neural Networks</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/zerogrid_highlighted.png" alt="Image Input"/>
+		<figcaption>Image Input</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/backpropagation_zero.png" alt="Input to Neural Network"/>
+		<figcaption>Input to Neural Network</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Images in Neural Networks</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/onegrid_highlighted.png" alt="Image Input"/>
+		<figcaption>Image Input</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/backpropagation_one.png" alt="Input to Neural Network"/>
+		<figcaption>Input to Neural Network</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>So we can detect numbers...</h2>
+
+	  That's all well and good, but what about pathology images?
+
+	</section>
+	
+
+	<section>
+	  <h2>Do You Know What These Are?</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_comparison.html"></iframe>
+	  </div>
+	</section>
+
+	<section>
+	  <h2>Do You Know What These Are?</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_stroma_comparison.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<!--<section>
+	  <h2>Do You Know What These Are?</h2>
+
+	  <div class="row">
+	    <div class="twocolumn"><img src="img/he_nocell01_resized.png" style="width:80.0%" /></div>
+	    <div class="twocolumn"><img src="img/he_nocell02_resized.png" style="width:80.0%" /></div>
+	  </div>
+	</section>-->
+	
+	<section>
+	  <h2>How Do You Know?</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              Let’s do some quick <strong>calculations</strong>...
+              <ul>
+		<li>Number of pixels: <span class="math inline">64 × 64 = 4, 096</span></li>
+		<li>Color values: <span class="math inline">4, 096 × 3 = 12, 288</span></li>
+              </ul>
+              
+              <p class="fragment">With just over <strong>12,000 values</strong>, our brains can identify the type of object in this image.</p>
+              <p class="fragment">That seems like a lot, but that’s just <strong>12kb</strong> worth of input data!</p>
+              <p class="fragment">But we aren’t done yet...</p>
+	    </div>
+	    <div class="twocolumn">
+              <img src="img/he_cell01_resized.png" style="width:80.0%" />
+	    </div>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Modifications to NNs Needed</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <ul>
+		<li>Input Size: 12,288</li>
+		<li>Hidden Units (double): 24,000</li>
+		<li>Input-to-Hidden Weights: 294 Million</li>
+		<li>Output Classes: 3</li>
+		<li>Hidden-to-Output Weights: 882 Million</li>
+              </ul>
+
+              <p class="fragment"><strong>Total Weights: 1.17 Billion</strong></p>
+              <p class="fragment">Our brains do a <strong>ton</strong> of computing!</p>
+              <p class="fragment">We need a new approach...</p>
+	    </div>
+	    <div class="twocolumn">
+              <img src="img/he_cell02_resized.png"/>
+	    </div>
+	  </div>
+	</section>
+	
+      </section>
+      
+      
+      <section>
+
+	<section>
+	  <h1>CNNs<br><small style="color: #e56a54ff">Neural Networks for Images</small></h1>
+	</section>
+	
+	<section>
+	  <h2>Exploiting Spatial Relationships</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <p>Images have some nice properties:</p>
+              <p class="fragment"><strong>Spatially Localized:</strong> Allows us to restrict the number of weights from input to output</p>
+              <p class="fragment"><strong>Scale-dependent:</strong> Reducing image scale allows us to find connections between shapes and objects</p>
+	    </div>
+	    <div class="twocolumn">
+              <img src="img/he_cell01_resized.png" style="width:80.0%" />
+	    </div>
+	  </div> 
+	</section>
+	
+
+	<section>
+	  <h2>CNN Architecture</h2>
+
+	  <figure>
+	    <img src="img/vgg16.png" alt="VGG 16 Network Architecture" style="width:100.0%" />
+	    <figcaption>VGG 16 Network Architecture</figcaption>
+	  </figure>
+	</section>
+	
+
+	<section>
+	  <h2>Filter Responses</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/cifar10_dog_input.png" alt="Dog" />
+		<figcaption>Dog</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/vgg16.png" alt="CNN Architecture" style="width:100.0%" />
+		<figcaption>CNN Architecture</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Filter Responses</h2>
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/cifar10_dog_input.png" alt="Dog" />
+		<figcaption>Dog</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/cifar10_dog_filters.png" alt="Filter Responses" style="width:60.0%" />
+		<figcaption>Filter Responses</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Example Nuclei / Non-nuclei Data</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_classes.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Filter Responses</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_example.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Filter Responses</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_filters.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Error During Training</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_training.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Some Testing Classifications</h2>
+	  <div id="wrap">
+	    <iframe id="frame" frameborder="0" seamless="seamless" scrolling="yes" src="img/plot_nuclei_inference.html"></iframe>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Image Segmentation</h2>
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/he_tissue_sample.jpg" alt="Tissue Sample" style="width:100.0%" />
+		<figcaption>Tissue Sample</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/ground_truth.png" alt="" style="width:100.0%" />
+		<figcaption>Ground Truth Segmentation</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+
+	<section>
+	  <h2>Image Segmentation</h2>
+	  <div class="row">
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/segmentation.jpg" alt="" style="width:100.0%" />
+		<figcaption>Segmentation</figcaption>
+              </figure>
+	    </div>
+	    <div class="twocolumn">
+              <figure>
+		<img src="img/ground_truth.png" alt="" style="width:100.0%" />
+		<figcaption>Ground Truth Segmentation</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+      </section>
+
+      <section>
+
+	<section>
+	  <h1>Annotations<br><small style="color: #e56a54ff">The Importance of Data</small></h1>
+	</section>
+	
+
+	<section>
+	  <h2>Large, Annotated Datasets</h2>
+	  <p class="fragment fade-left">ML benefits from <strong>large, well-annotated</strong> datasets</p>
+	  <p class="fragment fade-left"><strong>Natural</strong> images are abundant, easy-to-label data</p>
+	  <p class="fragment fade-left">However, it’s not so easy for <strong>pathology</strong>...</p>
+	</section>
+	
+	<section>
+	  <h2>Natural vs. Specialized Image Datasets</h2>
+
+	  <div class="row">
+	    <div class="threecolumn">
+              <figure>
+		<img src="img/kenji.jpg" alt="Toddler" style="width:100.0%; height:300px" />
+		<figcaption>Toddler</figcaption>
+              </figure>
+	    </div>
+	    <div class="threecolumn">
+              <figure>
+		<img src="img/kyoshi.jpg" alt="Dog (Akita)" style="width:100.0%; height:300px" />
+		<figcaption>Dog (Akita)</figcaption>
+              </figure>
+	    </div>
+	    <div class="threecolumn">
+              <figure>
+		<img src="img/he_tissue_sample_imagesearch.jpg" alt="Tissue (H&amp;E)" style="width:100.0%; height:300px" />
+		<figcaption>Tissue (H&amp;E)</figcaption>
+              </figure>
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Human Faces Are Well-Annotated</h2>
+
+	  <figure>
+	    <img src="img/kenji_imagesearch.png" alt="https://cloud.google.com/vision" style="height: 500px"/>
+	    <figcaption>https://cloud.google.com/vision</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Dog Faces Are Still Common</h2>
+
+	  <figure>
+	    <img src="img/kyoshi_imagesearch.png" alt="https://cloud.google.com/vision"  style="height: 500px"/><figcaption>https://cloud.google.com/vision</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Medical Images are Sparse</h2>
+
+	  <figure>
+	    <img src="img/he_imagesearch01.png" alt="https://cloud.google.com/vision" style="height: 500px"/>
+	    <figcaption>https://cloud.google.com/vision</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>There Is Some Data However</h2>
+
+	  <figure>
+	    <img src="img/he_imagesearch02.png" alt="https://cloud.google.com/vision" style="height: 500px" />
+	    <figcaption>https://cloud.google.com/vision</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Disparity in Dataset Sizes</h2>
+
+	  <figure>
+	    <img src="img/image_database_sizes.png" alt="Not Shown: ImageNet (14 Million)" /><figcaption>Not Shown: ImageNet (14 Million)</figcaption>
+	  </figure>
+	</section>
+	
+	<section>
+	  <h2>Challenges in Building Large Histopathology Datasets</h2>
+
+	  <p class="fragment fade-left"><strong>Data Generation:</strong> Limited scope, proprietary software, lack of standards</p>
+	  <p class="fragment fade-left"><strong>Data Hosting / Access:</strong> Large, high throughput storage options needed</p>
+	  <p class="fragment fade-left"><strong>Annotations:</strong> Difficult, time-consuming, application dependent</p>
+	</section>
+	
+	<section>
+	  <h2>Difficulty in Annotating Samples</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <img src="img/annotation_large_scale.png" style="width:100.0%" />
+	    </div>
+	    <div class="twocolumn">
+              <img src="img/annotation_small_scale.png" style="width:100.0%" />
+	    </div>
+	  </div>
+	</section>
+	
+	<section>
+	  <h2>Formal Annotation Training</h2>
+
+	  <div class="row">
+	    <div class="twocolumn">
+              <img src="img/annotation_stations_01.jpg" style="width:100.0%" />
+	    </div>
+	    <div class="twocolumn">
+              <img src="img/annotation_stations_02.jpg" style="width:100.0%" />
+	    </div>
+	  </div>
+	</section>
+
+      </section>
+      
+
+    </div>
+  </div>
+
+  <script src="./reveal.js/dist/reveal.js"></script>
+  <script src="./reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="./reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="./reveal.js/plugin/notes/notes.js"></script>
+  <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+	plugins: [RevealMarkdown, RevealZoom, RevealNotes],
+	history: true,
+	transition: 'fade'
+    });
+  </script>
+
+</body>
+</html>
