@@ -1,0 +1,10 @@
+#+TITLE: List of Reveal.js Presentations
+
+- [[https://scottdoy.com/slides/2019-12-17-comp-path-residents][Comp Path Residents]]
+- [[https://scottdoy.com/slides/2020-01-13-building-solutions][Building Solutions]]
+- [[https://scottdoy.com/slides/2020-01-16-laymans-guide][Layperson's Guide]]
+- [[https://scottdoy.com/slides/2020-01-20-ai-fundamentals][AI Fundamentals]]
+- [[https://scottdoy.com/slides/2020-01-21-ai-school-pt1][AI School for Pathology, Part 1]]
+- [[https://scottdoy.com/slides/2020-01-22-ai-school-pt2][AI School for Pathology, Part 2]]
+- [[https://scottdoy.com/slides/2021-11-02_pas520-machine-learning][PAS520: Machine Learning]]
+- [[https://scottdoy.com/slides/2021-11-30_nrs524][NRS524: Machine Learning]]
